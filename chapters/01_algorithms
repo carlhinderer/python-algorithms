@@ -1,0 +1,97 @@
+--------------------------------------------------------
+CH 1 - ALGORITHMS AND DATA STRUCTURES
+--------------------------------------------------------
+
+- 3 Types of Comparison
+
+    a == b               # a and b have the same value
+    a is b               # a and b are the same object
+    type(a) is type(b)   # a and b have the same type
+
+
+
+- Functions are First Class Objects
+
+    First class objects:
+      1. Are created at runtime
+      2. Can be assigned to variables
+      3. Can be passed as arguments
+      4. Can be returned from functions
+
+    In Python, all objects, including functions, are first class.
+
+
+    def greeting(language):
+        if language == 'eng':
+            return 'hello world'
+        elif language == 'fr':
+            return 'bonjour le monde'
+        else:
+            return 'language not supported'
+
+
+    # Pass functions around like any other object
+    >>> L = [greeting('eng'), greeting('fr'), greeting('ger')]
+    >>> L[1]
+    'bonjour le monde'
+
+
+    # Use function as argument
+    def callf(f):
+        lang = 'eng'
+        return f(lang)
+
+    >>> callf(greeting)
+    'hello world'
+
+
+
+- Higher order functions
+
+    Functions that take other functions as arguments or return functions are sometimes
+      called 'higher order functions'.  Python contains 2 built-in higher-order 
+      functions: 'map' and 'filter'.
+
+
+    >>> L = [1, 2, 3, 4]
+    >>> for item in map(lambda n: n*2, L): print(item, end=' ')
+    2 4 6 8
+
+    >>> for item in filter(lambda n: n<4, L): print(item, end=' ')
+    1 2 3
+
+
+    Note that most things that can be accomplished with 'map' and 'filter' can be 
+      accomplished in a more readable and equally performant way with list 
+      comprehensions.
+
+    [n*2 for n in L]
+    [n in L if n<4]
+
+
+
+    An example of the usefulness of passing functions as arguments is passing a
+      function as the key of the sort function:
+
+    # Longest word in a sequence
+    >>> words = str.split('The longest word in this sentence')
+    >>> sorted(words, key=len)
+    ['in', 'The', 'word', 'this', 'longest', 'sentence']
+
+    # Case-sensitive sorting
+    >>> L = ['A', 'b', 'a', 'C', 'c']
+    >>> L.sort()
+    >>> L
+    ['A', 'C', 'a', 'b', 'c']
+
+    # Case-insensitive sorting
+    >>> L.sort(key=str.lower)
+    >>> L
+    ['A', 'a', 'b', 'C', 'c']
+
+
+    # Sort more complex data structures
+    >>> items = [['rice', 2.4, 8], ['flour', 1.9, 5], ['corn', 4.7, 6]]
+    >>> items.sort(key=lambda item: item[1])
+    >>> print(items)
+    [['flour', 1.9, 5], ['rice', 2.4, 8], ['corn', 4.7, 6]]
