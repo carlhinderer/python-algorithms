@@ -95,3 +95,48 @@ CH 1 - ALGORITHMS AND DATA STRUCTURES
     >>> items.sort(key=lambda item: item[1])
     >>> print(items)
     [['flour', 1.9, 5], ['rice', 2.4, 8], ['corn', 4.7, 6]]
+
+
+
+- Generators
+
+    Generators are functions that return one result rather than an entire sequence
+      using the 'yield' statement. 
+
+
+    # Builds a list of odd numbers between n and m
+    def odd_list(n, m):
+        L = []
+        while n<m:
+            L.append(n)
+            n+=2
+        return L
+
+    # Generates an iterator of odd numbers between n and m
+    def odd_gen(n, m):
+        while n<m:
+            yield n
+            n+=2
+
+
+    # Time the 2 functions
+    >>> import time
+    >>> t0 = time.time()
+    >>> sum(odd_gen(1, 1000000))
+    >>> gen_time = time.time() - t0
+    >>> print("Time to sum an iterator: %f" % gen_time)
+    Time to sum an iterator: 0.133119
+
+    >>> t0 = time.time()
+    >>> sum(odd_list(1, 1000000))
+    >>> list_time = time.time() - t0
+    >>> print("Time to build and sum a list: %f" % list_time)
+    Time to build and sum a list: 0.191172
+
+
+    Generator objects can be created and used in a way similar to list comprehensions.
+
+    >>> L = [1, 2, 3, 4]
+    >>> gen1 = (10**i for i in L)
+    >>> for x in gen1: print(x, end=' ')
+    10 100 1000 10000
