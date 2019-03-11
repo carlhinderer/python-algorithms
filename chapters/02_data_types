@@ -166,3 +166,68 @@ CH 2 - DATA TYPES AND STRUCTURES
     >>> s1.add(frozenset(s2))
     >>> s1
     {'a', 'b', 3, 4, frozenset({'c', 'd', 5, 6})}
+
+
+
+- The 'collections' module
+
+    namedtuple()               # Creates tuple subclasses with named fields
+    deque                      # Lists with fast appends and pops at either end
+    ChainMap                   # Dictionary-like class to create single view of multiple mappings
+    Counter                    # Dictionary subclass for counting hashable objects
+    OrderedDict                # Dictionary subclass that remembers the entry order
+    defaultdict                # Dictionary subclass that calls a function to supply missing values
+
+    UserDict                   # Wrappers for base classes so they can be subclassed
+    UserList                   # (Rarely used any more since base classes can now be subclassed directly)
+    UserString
+
+
+
+- Deques
+
+    Double-ended queues (aka deques) are list-like objects that support thread-safe, memory-efficient
+      appends.  They are mutable and can be indexed into, but cannot be sliced.
+
+    The main advantage of deques over lists is that inserting items at the beginning of a deque is
+      much faster than inserting items at the beginning of a list.
+
+
+    >>> from collections import deque
+    >>> dq = deque('abc')
+    >>> dq.append('d')
+    >>> dq.appendleft('z')
+
+    >>> dq.extend('efg')
+    >>> dq.extendleft('yxw')
+    >>> dq
+
+    >>> dq.pop()
+    'g'
+    >>> dq.popleft()
+    'w'
+
+    # Rotate all items to the right in circular fashion
+    >>> dq.rotate(2)
+
+    # Rotate all items to the left in circular fashion
+    >>> dq.rotate(-2)
+
+
+
+- Circular buffers using deques
+
+    The 'maxlen' optional parameter can be used to restrict the size of the deque.  In this
+      example, we are populating from the right and consuming from the left.
+
+    >>> dq = deque([], maxlen=3)
+    >>> for i in range(6):
+        dq.append(i)
+        print(dq)
+
+    deque([0])
+    deque([0, 1])
+    deque([0, 1, 2])
+    deque([1, 2, 3])
+    deque([2, 3, 4])
+    deque([3, 4, 5])
