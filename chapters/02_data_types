@@ -44,3 +44,75 @@ CH 2 - DATA TYPES AND STRUCTURES
 
     # Create an empty tuple
     t = tuple()
+
+
+
+- Dictionary methods
+
+    len(d)                  # Total number of items in d
+    d.clear()               # Removes all items
+    d.copy()                # Returns shallow copy
+    d.fromkeys(s[,value])   # New dictionary with keys in s and values set to value
+    d.get(k[,v])            # Returns d[k] if k is found, otherwise returns v
+
+    d.items()
+    d.keys()
+    d.values()
+
+    d.pop(k[,default])      # Returns d[k] and removes it from d
+    d.popitem()             # Returns a random item and removes it from d
+    d.setdefault(k[,v])     # Returns d[k]. If not found, retunrs v and sets d[k] to v
+    d.update(b)             # Adds all the items from to d
+
+
+
+- Sorting dictionaries
+
+    >>> d = {'one': 1, 'two': 2, 'three': 3, 'four': 4}
+
+    # Sorted list of keys
+    >>> sorted(list(d))
+    ['four', 'one', 'three', 'two']
+
+    # Sorted list of values
+    >>> sorted(list(d.values())
+    [1, 2, 3, 4]
+
+    # Sorted list of keys according to values
+    >>> sorted(list(d), key = d.__get__item)
+    ['one', 'two', 'three', 'four']
+
+    # Sort in reverse order
+    >>> sorted(list(d), key = d.__get__item, reverse=True)
+    ['four', 'three', 'two', 'one']
+
+    # Use list comprehension to get sorted list of values according to keys
+    >>> [value for (key, value) in sorted(d.items())]
+    [4, 1, 3, 2]
+
+
+    # Define a custom sorting method (sorts on last letter of the strings)
+    >>> def corder(string): return(string[len(string)-1])
+    >>> sorted(d, key=corder)
+    ['one', 'three', 'two', 'four']
+
+
+
+- Example - Count words in a text file using dictionary
+
+    def wordcount(fname):
+        try:
+            fhand = open(fname)
+        except:
+            print('File cannot be opened')
+            exit()
+
+        count = dict()
+        for line in hand:
+            words = line.split()
+            for word in words:
+                if word not in count:
+                    count[word] = 1
+                else:
+                    count[word] += 1
+        return count
