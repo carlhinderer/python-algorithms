@@ -412,3 +412,18 @@ CH 2 - DATA TYPES AND STRUCTURES
     # Get fields
     >>> space._fields
     ('x', 'y', 'z')
+
+
+
+- Arrays
+
+    The 'array' module defines a homogenous list type.  They are used to increase efficiency 
+      by using only the space needed for the underlying C type.  For instance, an array of a
+      million integers requires 90% of the memory of an equivalent list.  This is really only
+      important when dealing with huge datasets and/or limited memory size.
+
+    >>> import array, sys
+    >>> ba = array.array('i', range(10**6))
+    >>> bl = list(range(10**6))
+    >>> 100*sys.getsizeof(ba)/sys.getsizeof(bl)
+    90.92989871246161
