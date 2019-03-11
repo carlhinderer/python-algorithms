@@ -1,0 +1,46 @@
+--------------------------------------------------------
+CH 2 - DATA TYPES AND STRUCTURES
+--------------------------------------------------------
+
+- Sequence Methods
+
+    len(s)           # Returns number of elements in s
+    min(s)           # Returns minimum value in s (alphabetical for strings)
+    max(s)           # Returns maximum value in s (alphabetical for strings)
+    sum(s)           # Returns sum of all elements (or TypeError if not numeric)
+    all(s)           # Returns true if all elements in s are True
+    any(s)           # Returns true if any element in s is True
+
+
+
+- Sequence Operations
+
+    s+r              # Concatenates 2 sequences
+    s*n              # Makes n copies of s
+    v1,..., vn = s   # Unpacks n variables from s
+    s[i:j:stride]    # Returns selected elements
+    x in s           # Returns true if x is in s
+    x not in s       # Returns true if x is not in s
+
+
+
+- Sequence Comparisons
+
+    >>> L1 = [1, 2, 3, 4]
+    >>> L2 = [1, 2, 3, 4]
+    >>> L3 = [1, 2, 3]
+
+    >>> L1 == L2
+    True
+    >>> L2 > L3
+    True
+
+
+
+- Tuples are hashable
+
+    Tuples are hashable, since they are immutable.  This means they can be used as keys
+      in dictionaries.
+
+    # Create an empty tuple
+    t = tuple()
