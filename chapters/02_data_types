@@ -334,3 +334,42 @@ CH 2 - DATA TYPES AND STRUCTURES
     >>> ct.subtract({'e': 2})
     >>> ct
     Counter({'a': 2, 'b': -1, 'c': 1, 'e': 0})
+
+
+
+- Ordered dictionaries
+
+    OrderedDicts remember the order in which elements were inserted, so when we iterate
+      over them, they return values in the order in which they were inserted.
+
+    >>> from collections import OrderedDict
+    >>> od1 = OrderedDict()
+    >>> od1['one'] = 1
+    >>> od1['two'] = 2
+
+    >>> od2 = OrderedDict()
+    >>> od2['two'] = 2
+    >>> od2['one'] = 1
+
+    >>> od1 == od2
+    False
+
+
+
+- defaultdict
+
+    The 'defaultdict' provides an easy wasy to initialize dictionaries.  The 'defaultdict'
+      overrides the behavior when trying to access a missing key (the 'missing(key)' method), 
+      and creates a new instance variable, 'default_factory'.
+
+    >>> from collections import defaultdict
+    >>> dd = defautldict(int)
+
+
+    Note that no KeyErrors are generated when we insert the dictionary entries.  With a normal
+      dictionary, we'd need to test and check whether each key is present before inserting it.
+
+    >>> words = str.split('red blue green red yellow blue red green green red')
+    >>> for word in words: dd[word] +=1
+    >>> dd
+    defaultdict(<class 'int'>, {'red': 4, 'blue': 2, 'green': 3, 'yellow': 1})
