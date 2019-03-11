@@ -140,3 +140,48 @@ CH 1 - ALGORITHMS AND DATA STRUCTURES
     >>> gen1 = (10**i for i in L)
     >>> for x in gen1: print(x, end=' ')
     10 100 1000 10000
+
+
+
+- OOP
+
+    class Employee:
+        num_employees = 0        # Class variable
+
+        def init(self, name):
+            self.name = name     # Instance variable
+            Employee.num_employees += 1
+
+
+
+- Class methods vs static methods
+
+    Static methods don't know anything about the class, it only deals with parameters.
+    Class methods only work with the class, and its parameter is always the class itself.
+
+
+    class exponentialA(object):
+        base = 3
+
+        @classmethod
+        def exp(cls, x):
+            return cls.base**x
+
+        @staticmethod
+        def addition(x, y):
+            return x+y
+
+
+    class exponentialB(exponentialA):
+        base = 4
+
+
+    >>> a = exponentialA()
+    >>> b = a.exp(3)
+
+    >>> b
+    27
+    >>> exponentialA.addition(15, 10)
+    25
+    >>> exponentialB.exp(3)
+    64
