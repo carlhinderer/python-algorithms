@@ -116,3 +116,53 @@ CH 2 - DATA TYPES AND STRUCTURES
                 else:
                     count[word] += 1
         return count
+
+
+
+- Sets and Frozensets
+
+    Sets are mutable, but the items they contain must be immutable.  This is because all built-in
+      immutable types are hashable.
+
+    Frozensets are immutable.
+
+
+    Methods shared by all sets:
+
+    len(a)
+    a.copy()
+    a.difference(t)
+    a.intersection(t)
+    a.union(t)
+    a.symmetric_difference(t)  # Returns elements that are in either a or t, but not both
+
+    a.isdisjoint(t)            # Returns True if a and t have no elements in common
+    a.issubset(t)
+    a.issuperset(t)
+
+
+    Mutable set methods:
+
+    s.add(item)
+    s.discard(item)
+    s.remove(item)
+    s.pop()                    # Removes arbitrary element and returns it
+    s.clear()
+
+    s.difference_update(t)     # Removes all elements in t from s
+    s.intersection_update(t)   # Removes elements from s that are not in (s | t)
+    s.symmetric_difference_update(t)    # Removes elements from s that are not in (s ^ t)
+    s.update(t)                # Appends all items in iterable t to s
+
+
+    Frozensets:
+
+    # A set cannot be a member of a set, since its mutable
+    >>> s1 = {'a', 'b', 3, 4}
+    >>> s2 = {'c', 'd', 5, 6}
+    >>> s1.add(s2)
+    TypeError: unhashable type: 'set'
+
+    >>> s1.add(frozenset(s2))
+    >>> s1
+    {'a', 'b', 3, 4, frozenset({'c', 'd', 5, 6})}
