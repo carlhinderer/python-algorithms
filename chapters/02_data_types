@@ -231,3 +231,44 @@ CH 2 - DATA TYPES AND STRUCTURES
     deque([1, 2, 3])
     deque([2, 3, 4])
     deque([3, 4, 5])
+
+
+
+- ChainMap objects
+
+    The 'ChainMap' class provides a way to like multiple dictionaries (or other mappings)
+      together so that they can be treated as a single object.
+
+    >>> from collections import ChainMap
+    >>> d1 = {'a': 1, 'b': 2, 'c': 3}
+    >>> d2 = {'d': 4, 'e': 5}
+    >>> chainmap = ChainMap(d1, d2)
+    >>> chainmap
+    ChainMap({'a': 1, 'b': 2, 'c': 3}, {'d': 4, 'e': 5})
+
+    >>> chainmap.maps
+    [{'a': 1, 'b': 2, 'c': 3}, {'d': 4, 'e': 5}]
+    >>> chainmap['a']
+    1
+    >>> chainmap['e']
+    5
+
+
+    ChainMaps are particulary useful when we want to keep track of defaults (like for settings)
+      while also keeping track of overrides.
+
+    >>> defaults= {'theme':'Default','language':'eng','showIndex':True, 'showFooter':True}
+    >>> cm= ChainMap(defaults)   #creates a chainMap with defaults configuration
+    >>> cm.maps[{'theme': 'Default', 'language': 'eng', 'showIndex': True, 'showFooter': True}]
+    >>> cm.values()
+    ValuesView(ChainMap({'theme': 'Default', 'language': 'eng', 'showIndex': True, 'showFooter': True}))
+
+    >>> cm2= cm.new_child({'theme':'bluesky'}) # create a new chainMap with a child that overrides the parent.
+    >>> cm2['theme']  #returns the overridden theme'bluesky'
+    >>> cm2.pop('theme')  # removes the child theme value
+    'bluesky' 
+    >>> cm2['theme']
+    'Default'
+    >>> cm2.maps[{}, {'theme': 'Default', 'language': 'eng', 'showIndex': True, 'showFooter': True}]
+    >>> cm2.parents
+    ChainMap({'theme': 'Default', 'language': 'eng', 'showIndex': True, 'showFooter': True})
