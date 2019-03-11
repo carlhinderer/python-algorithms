@@ -373,3 +373,42 @@ CH 2 - DATA TYPES AND STRUCTURES
     >>> for word in words: dd[word] +=1
     >>> dd
     defaultdict(<class 'int'>, {'red': 4, 'blue': 2, 'green': 3, 'yellow': 1})
+
+
+
+- Named Tuples
+
+    The 'namedtuple' method returns a tuple-like object that has fields accessible with named
+      indexes as well as the integer indexes of normal tuples.
+
+    # Field names are passed in as comma- or whitespace-separated values
+    >>> from collections import namedtuple
+    >>> space = namedtuple('space', 'x y z')
+    >>> s1 = space(x=2.0, y=4.0, z=10)
+    >>> s1
+    space(x=2.0, y=4.0, z=10)
+
+    # Access elements by name
+    >>> s1.x * s1.y * s1.z
+    80.0
+
+    # Access elements by position
+    >>> s1._0 * s1._1 * s1._2
+    80.0
+
+    # Pass in a sequence of values using the '_make' method
+    >>> sl = [4, 5, 6]
+    >>> space._make(sl)
+    space(x=4, y=5, z=6)
+
+    # The '_asdict' method will return an OrderedDict
+    >>> s1._asdict()
+    OrderedDict([('x', 4), ('y', 5), ('z', 6)])
+
+    # The '_replace' method returns a new instance of the tuple, with updated values
+    >>> s1._replace(x=7, z=9)
+    space(x=7, y=5, z=9)
+
+    # Get fields
+    >>> space._fields
+    ('x', 'y', 'z')
