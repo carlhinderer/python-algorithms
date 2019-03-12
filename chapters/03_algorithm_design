@@ -1,0 +1,59 @@
+--------------------------------------------------------
+CH 3 - ALGORITHM DESIGN
+--------------------------------------------------------
+
+- There are 3 broad approaches to algorithm design
+
+    1. Divide and conquer
+    2. Greedy algorithms
+    3. Dynamic programming
+
+
+
+- Divide and Conquer Algorithms
+
+    The divide and conquer paradigm is to break a problem into smaller and smaller
+      subproblems, then solving those subproblems, and then combining the results to obtain
+      a global optimal solution.  
+
+    Common examples:
+      - Binary Search
+      - Merge Sort
+      - Quick Sort
+      - Karatsuba algorithm for fast multiplication
+      - Strassen's matrix multiplication
+      - Closest pair of points
+
+
+
+- Greedy Algorithms
+
+    Greedy algorithms often involve optimization and combinatorial problems.  The objective is 
+      to obtain the best possible solutions in each step, and we try to get the local optimum 
+      solution which may eventually lead us to the overall optimum solution.
+
+    Common examples:
+      - Kruskal's minimum spanning tree
+      - Dijkstra's shortest path
+      - Knapsack problem
+      - Prim's minimum spanning tree algorithm
+      - Travelling salesman problem
+
+    For instance, the travelling salesman problem is NP-hard, so it is not possible to 
+      enumerate every route that the salesman could possibly take.  So, the greedy approach
+      is to always just choose the closest unvisited destination first, and hope this will 
+      lead to a good-enough solution.
+
+
+
+- Dynamic Programming
+
+    The dynamic programming approach is useful when our subproblems overlap.  Unlike with
+      divide-and-conquer, intermediate results are cached and can be used in subsequent
+      operations.
+
+    Like divide and conquer, it uses recursion.  However, the difference is that dynamic
+      programming allows us to compare results at different stages.  
+
+    Common example:
+      - Matrix multiplication
