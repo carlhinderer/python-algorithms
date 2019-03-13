@@ -173,3 +173,43 @@ CH 4 - LISTS AND POINTER STRUCTURES
                 return
             prev = current
             current = current.next
+
+
+
+- Searching the list
+
+    We can use the 'iter' method we just wrote to search the list.
+
+    def search(self, data):
+        for node in self.iter():
+            if data == node:
+                return True
+        return False
+
+
+
+- Clearing a list
+
+    def clear(self):
+        self.tail = None
+        self.head = None
+
+
+
+- Doubly linked lists
+
+    Doubly linked lists keep pointers to the nodes both before and after them, so they can
+      be traversed in either direction.
+
+    class Node(object):
+        def __init__(self, data=None, next=None, prev=None):
+            self.data = data
+            self.next = next
+            self.prev = prev
+
+
+    class DoublyLinkedList(object):
+        def __init__(self):
+            self.head = None       # Here the head points to the first node in the list
+            self.tail = None       # Here the tail points to the latest added node
+            self.count = 0
