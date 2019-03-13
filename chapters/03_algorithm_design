@@ -129,4 +129,37 @@ CH 3 - ALGORITHM DESIGN
     t= karatsuba(1234,3456)
     print(t)
 
-    # outputs - 4264704    
+    # outputs - 4264704
+
+
+
+- Complexity Classes
+
+    Class         Name              Examples
+    ------------------------------------------------------------------------------
+    O(1)          Constant          append, get item, set item
+    O(lg n)       Logarithmic       finding an element in a sorted array
+    O(n)          Linear            copy, insert, delete, iteration
+    O(n lg n)     Log Linear        sort a list
+    O(n**2)       Quadratic         find shortest path between 2 nodes in a graph
+    O(n**3)       Cubic             matrix multiplication
+    O(2**n)       Exponential       tower of hanoi, backtracking
+
+
+
+- Asymptotic Notation
+
+    O(n)          Upper Bound
+    Omega(n)      Lower Bound
+    Theta(n)      Upper and Lower Bound
+
+
+
+- Amortized Analysis
+
+    Often, we are more interested in the average running time or an algorith, rather
+      than the worst case.  This is called amortized analysis.
+
+    For instance, we can take the state change of data structures into account, assuming
+      that a data structure is always close to sorted instead of assuming the data is
+      completely random.
