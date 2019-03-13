@@ -54,3 +54,56 @@ CH 4 - LISTS AND POINTER STRUCTURES
     >>> while current:
             print(current.data)
             current = current.next
+
+
+
+- Singly linked list class
+
+    class SinglyLinkedList:
+        def __init__(self):
+            self.tail = None        # Tail is first node in our list
+
+        def append(self, data):
+            node = Node(data)
+            if self.tail = None
+                self.tail = node
+            else:
+                current = self.tail
+                while current.next:
+                    current = current.next
+                current.next = node
+
+
+    # Create a list
+    >>> words = SinglyLinkedList()
+    >>> words.append('egg')
+    >>> words.append('ham')
+    >>> words.append('spam')
+
+    # Traverse the list
+    >>> current = words.tail
+    >>> while current:
+            print(current.data)
+            current = current.next
+
+
+
+- Faster append operation
+
+    The naive implementation of appending runs in O(n) time.  In order to make it run in
+      O(1) time, we keep track of both the head and tail of the list.
+
+
+    def SinglyLinkedList:
+        def __init__(self, data):
+            self.head = None          # Head is the last node in our list
+            self.tail = None
+
+        def append(self, data):
+            node = Node(data)
+            if self.head:
+                self.head.next = node
+                self.head = node
+            else:
+                self.tail = node
+                self.head = node
