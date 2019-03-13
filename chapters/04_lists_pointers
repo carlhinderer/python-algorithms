@@ -1,0 +1,56 @@
+--------------------------------------------------------
+CH 4 - LISTS AND POINTER STRUCTURES
+--------------------------------------------------------
+
+- Arrays
+
+    Arrays are sequential lists of data.  Each element is stored right after the previous
+      one in memory.  If the array is really big and you are low on memory, this could
+      be a problem.  However, accessing individual elements in them can easily be done
+      in constant time.
+
+
+
+- Pointer Structures
+
+    Pointer structures can be spread out in memory, because each item contains links to
+      other items in the structure.  Their biggest advantages are that they don't require
+      sequential storage space, and they can start small and grow bigger as you need 
+      them to.
+
+
+
+- Simple Node Class
+
+    class Node:
+        def __init__(self, data=None):
+            self.data = data
+            self.next = None
+
+        def _str_(self):
+            return str(data)
+
+
+
+- Types of Lists
+
+    There are 3 types of lists:
+      1. Singly linked list
+      2. Doubly linked list
+      3. Circular linked list
+
+
+
+- Singly linked lists
+
+    >>> n1 = Node('eggs')
+    >>> n2 = Node('ham')
+    >>> n3 = Node('spam')
+
+    >>> n1.next = n2
+    >>> n2.next = n3
+
+    >>> current n1
+    >>> while current:
+            print(current.data)
+            current = current.next
