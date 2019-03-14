@@ -96,3 +96,44 @@ CH 5 - STACKS AND QUEUES
     This implementation adds new items onto the front of the list, pushing all existing 
       items back.  Dequeueing just removes the last item from the end of the list.  So, 
       enqueueing is O(n), and dequeueing is O(1).
+
+
+
+- Stack-based queues
+
+    Queues can be implemented using 2 stacks.  In our implementation, we use Python
+      lists as the stacks and just call 'push' and 'pop' methods on them.
+
+
+    class StackQueue:
+        def __init__(self):
+            self.inbound_stack = []
+            self.outbound_stack = []
+
+        def enqueue(self, data):
+            self.inbound_stack.append(data)    # append is like a push
+
+
+    # Test the enqueue
+    >>> queue = StackQueue()
+    >>> queue.enqueue(5)
+    >>> queue.enqueue(6)
+    >>> queue.enqueue(7)
+
+    >>> print(queue.inbound_stack)
+    [5, 6, 7]                                  # 7 is top of stack
+
+
+
+- Dequeueing from stack-based queues
+
+    We use the outbound stack for dequeues.  If the outbound stack is empty, we move
+      all of the elements from the inbound stack over to it.  If the outbound stack is
+      not empty, we just pop the first element off of it.
+
+
+    def dequeue(self):
+        if not self.outbound_stack:
+            while self.inbound_stack:
+                self.outbound_stack.append(self.inbound_stack.pop())
+        return self.outbound_stack.pop()
