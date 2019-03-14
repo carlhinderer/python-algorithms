@@ -263,3 +263,36 @@ CH 4 - LISTS AND POINTER STRUCTURES
                 current = current.next
 
         if node_deleted: self.count -= 1
+
+
+
+- Searching a doubly linked list
+
+    We can search the same way we do with a singly linked list.
+
+    def contain(self, data):
+        for node in self.iter():
+            if data == node:
+                return True
+        return False
+
+
+
+- Circular lists
+
+    A circular linked list is a special case of a linked list.  In a circular linked list, 
+      the endpoints are connected to each other.  Circular can be either singly or doubly
+      linked.  
+
+      |------------------------------------------|
+      |   --------      --------      --------   |
+      |---| Data |      | Data |      | Data | <-|
+          | Prev | <--- | Prev | <--- | Prev |
+      |-> | Next | ---> | Next | ---> | Next | --|
+      |   --------      --------      --------   |
+      |     A             B              C       |
+      -------------------------------------------|
+
+
+    We can reuse most of our original 'SinglyLinkedList' class to implement our singly linked
+      circular list.
