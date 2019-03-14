@@ -61,7 +61,7 @@ CH 4 - LISTS AND POINTER STRUCTURES
 
     class SinglyLinkedList:
         def __init__(self):
-            self.tail = None        # Tail is first node in our list
+            self.tail = None         # Tail is first node in our list
 
         def append(self, data):
             node = Node(data)
@@ -96,7 +96,7 @@ CH 4 - LISTS AND POINTER STRUCTURES
 
     def SinglyLinkedList:
         def __init__(self, data):
-            self.head = None          # Head is the last node in our list
+            self.head = None          # Head is the latest added node in our list
             self.tail = None
 
         def append(self, data):
@@ -213,3 +213,18 @@ CH 4 - LISTS AND POINTER STRUCTURES
             self.head = None       # Here the head points to the first node in the list
             self.tail = None       # Here the tail points to the latest added node
             self.count = 0
+
+
+
+- Appending to doubly linked lists
+
+    def append(self, data):
+        new_node = Node(data, None, None)
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
+        self.count += 1
