@@ -4,6 +4,9 @@ CH 5 - STACKS AND QUEUES
 
 - Stack
 
+    All stack operations run in O(1) time.
+
+
     class Node:
         def __init__(self, data=None):
             self.data = data
@@ -41,3 +44,55 @@ CH 5 - STACKS AND QUEUES
                 return self.top.data
             else:
                 return None
+
+
+
+- Example - Bracket Matcher
+
+    def check_brackets(statement):
+        stack = Stack()
+        for ch in statement:
+            if ch in ('{', '[', '('):
+                stack.push(ch)
+            if ch in ('}', ']', ')'):
+                last = stack.pop()
+
+            if last is '{' and ch is '}':
+                continue
+            elif last is '[' and ch is ']':
+                continue
+            elif last is '(' and ch is ')':
+                continue
+            else:
+                return False
+
+        if stack.size > 0:
+            return False
+        else:
+            return True
+
+
+
+- List-based queues
+
+    Queues can be implemented in a variety of ways, including with lists, stacks, 
+      and nodes.  This is a list-based implementation:
+
+      class ListQueue:
+          def __init__(self):
+              self.items = []
+              self.size = 0
+
+          def enqueue(self, data):
+              self.items.insert(0, data)
+              self.size += 1
+
+          def dequeue(self):
+              if self.size > 0:
+                  self.size -= 1
+                  return self.items.pop()
+
+
+    This implementation adds new items onto the front of the list, pushing all existing 
+      items back.  Dequeueing just removes the last item from the end of the list.  So, 
+      enqueueing is O(n), and dequeueing is O(1).
