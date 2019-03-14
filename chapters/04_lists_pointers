@@ -296,3 +296,51 @@ CH 4 - LISTS AND POINTER STRUCTURES
 
     We can reuse most of our original 'SinglyLinkedList' class to implement our singly linked
       circular list.
+
+
+
+- Appending to a circular list
+
+    To append an element to a circular list, we just have to make sure that the newly added
+      node points back to the tail node.
+
+    def append(self, data):
+        node = Node(data)
+        if self.head:
+            self.head.next = node
+            self.head = node
+        else:
+            self.head = node
+            self.tail = node
+
+        self.head.next = self.tail
+        self.size += 1
+
+
+
+- Deleting from a circular list
+
+    When we are looping through a circular list, we can't just check for None, since
+      the end node points back to the first node.  
+
+    def delete(self, data):
+        current = self.tail
+        prev = self.tail
+        while prev == current or prev != self.head:
+            if current.data == data:
+                if current == self.tail:
+                    self.tail = current.next
+                    self.head.next = self.tail
+                else:
+                    prev.next = current.next
+                self.size -= 1
+                return
+            prev = current
+            current = current.next
+
+
+
+- Iterating through a circular list
+
+    When iterating through a circular list, we just need to make sure we stop once we've
+      gone through all the nodes.
