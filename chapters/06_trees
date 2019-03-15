@@ -1,0 +1,50 @@
+--------------------------------------------------------
+CH 6 - TREES
+--------------------------------------------------------
+
+- Trees
+
+    A tree is a hierarchical data structure.  
+
+      Root Node    = Top node in the tree all other nodes are attached to, every tree has
+                     exactly one root node
+
+      Sub-tree     = A tree whose nodes are a descendant of some other tree
+
+      Degree       = Total number of children of a given node
+      (of a node)
+
+      Leaf Node    = A node that doesn't have any children, a terminal node of the tree,
+                     degree is always zero
+
+      Edge         = Connection between any 2 nodes, maximum total number of edges in a tree is
+                     (number_of_nodes - 1)
+
+      Parent       = A node in the tree which has a further sub-tree is the parent node of that
+                     sub-tree
+
+      Child        = A node connected to its parent
+
+      Sibling      = All nodes with the same parent are siblings
+
+      Level        = Root is at node 0, each layer below it is incremented by 1
+
+      Height       = Total number of nodes in the longest path of the tree
+
+      Depth        = The depth of a node is the number of edges from the root of the tree to 
+                     that node
+
+
+
+- Tree Nodes
+
+    - A tree should never have cycles.
+
+    - A tree with no nodes is an 'empty tree'.
+
+    - A 'binary tree' is a tree in which all nodes have 0, 1, or 2 children.
+
+    - A tree is a 'full binary tree' if all nodes have either 0 or 2 children.
+
+    - A tree is a 'complete binary tree' if it is completely filled, except for
+        the bottom level, which is filled in left to right.
