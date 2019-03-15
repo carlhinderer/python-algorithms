@@ -229,3 +229,47 @@ CH 6 - TREES
                   traversal_queue.append(node.right_child)
 
             return list_of_nodes
+
+
+
+- Binary Search Trees
+
+    A binary search tree has the properties:
+
+      1. The value at any node in the tree is greater than the values in all the nodes 
+           of its left sub-tree.
+
+      2. The value at any node in the tree is less than or equal to the values of all
+           the nodes of the right sub-tree.
+
+
+                         5
+                        / \
+                       3   7
+                      / \   \
+                     1   4   9
+
+
+
+- Binary Search Tree implementation
+
+    - To find the minimum and maximum nodes, we can just go down the left and 
+        right sides.  Both can be done in O(h) time, in which h is the height of
+        the tree.  
+
+
+    class BST:
+        def __init__(self):
+            self.root_node = None
+
+        def find_min(self):
+            current = self.root_node 
+            while current.left_child: 
+                current = current.left_child 
+            return current
+
+        def find_max(self):
+            current = self.root_node
+            while current.right_child:
+                current = current.right_child
+            return current
