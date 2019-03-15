@@ -48,3 +48,44 @@ CH 6 - TREES
 
     - A tree is a 'complete binary tree' if it is completely filled, except for
         the bottom level, which is filled in left to right.
+
+
+
+- Binary tree nodes
+
+    class Node:
+        def _init__(self, data):
+            self.data = data
+            self.left_child = None
+            self.right_child = None
+
+
+    # Create binary tree nodes
+    >>> n1 = Node("root node")  
+    >>> n2 = Node("left child node") 
+    >>> n3 = Node("right child node") 
+    >>> n4 = Node("left grandchild node")
+
+    # Connect nodes with edges
+    >>> n1.left_child = n2 
+    >>> n1.right_child = n3 
+    >>> n2.left_child = n4 
+
+    # Traverse the left side of the tree
+    >>> current = n1
+    >>> while current:
+            print(current.data)
+            current = current.left_child
+
+
+
+- Depth-first traversal
+
+    In depth-first traversal, we traverse the tree by starting at the root, and go deeper
+      into the tree as much as possible on each child, then continue to traverse the next
+      sibling.
+
+    There are 3 forms of depth-first traversal:
+      1. In-order traversal
+      2. Pre-order traversal
+      3. Post-order traversal
