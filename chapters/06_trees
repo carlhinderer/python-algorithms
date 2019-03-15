@@ -111,8 +111,8 @@ CH 6 - TREES
 
 - Infix notation and expression trees
 
-    'Infix notation' (aka 'reverse Polish notation') is used to express arithmetic
-      expressions where the operators are placed in between the operands.
+    'Infix notation' is used to express arithmetic expressions where the operators are
+      placed in between the operands.
 
       (4 + 5)
 
@@ -158,3 +158,32 @@ CH 6 - TREES
         -   3
        / \
       8   3         Prefix notation:  + - 8 3 3
+
+
+
+- Post-order traversal
+
+    With post-order traversal, we follow these steps:
+      1. First, we traverse the left sub-tree
+      2. Next, we traverse the right sub-tree
+      3. Finally, we visit the root node
+
+    def postorder(self, root_node):
+        current = root_node
+        if current is None: return
+        self.postorder(current.left_child)
+        self.postorder(current.right_child)
+        print(current.data)
+
+
+
+- Postfix notation
+
+    'Postfix notation' (aka 'reverse Polish notation') places an operand after
+      its operands.
+
+          +
+         / \
+        -   3
+       / \
+      8   3         Prefix notation:  8 3 - 3 +
