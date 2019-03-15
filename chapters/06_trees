@@ -89,3 +89,38 @@ CH 6 - TREES
       1. In-order traversal
       2. Pre-order traversal
       3. Post-order traversal
+
+
+
+- In-order traversal
+
+    With in-order traversal, we follow these steps:
+      1. We start traversing the left sub-tree and call the 'inorder' function recursively
+      2. Next, we visit the root node
+      3. Finally, we traverse the right sub tree and call the 'inorder' function recursively
+    
+
+    def inorder(self, root_node):
+        current = root_node
+        if current is None: return
+        self.inorder(current.left_child)
+        print(current.data)
+        self.inorder(current.right_child)
+
+
+
+- Infix notation and expression trees
+
+    'Infix notation' (aka 'reverse polish notation') is used to express arithmetic
+      expressions where the operators are placed in between the operands.
+
+      4 + 5
+
+
+    An 'expression tree' is a special kind of binary tree that can be used to represent
+      arithmetic expressions.  An in-order traversal of this tree produces an infix
+      notation.
+
+        +
+       / \
+      4   5
