@@ -187,3 +187,45 @@ CH 6 - TREES
         -   3
        / \
       8   3         Prefix notation:  8 3 - 3 +
+
+
+
+- Lists vs Deques
+
+    - Internally, Python lists are implemented as arrays.  This means that growing 
+        beyond the current allocation size, or inserting/removing from the beginning
+        of the list is expensive.  If you have to add/remove from both sides of the
+        list, use a deque.
+
+    - Internally, Python deques are implemented as doubly linked lists.  Adding and 
+        removing from both ends is fast, but looking/adding/deleting in the middle is
+        slow.
+
+
+
+- Breadth-first traversal
+
+    With a breadth-first traversal, we traverse the root node(level 0), then all
+      the nodes in level 1, then all the nodes in level 2, then all the nodes
+      up to level n.
+
+    We use a deque to do this traversal, because it allows us to both push and
+      pop from both sides.  
+
+
+    from collections import deque
+
+    class Tree:
+        def breadth_first_traversal(self):
+            list_of_nodes = [] 
+            traversal_queue = deque([self.root_node])
+
+            while len(traversal_queue) > 0:
+     	         node = traversal_queue.popleft() 
+     	         list_of_nodes.append(node.data) 
+     	         if node.left_child: 
+                  traversal_queue.append(node.left_child) 
+     	         if node.right_child: 
+                  traversal_queue.append(node.right_child)
+
+            return list_of_nodes
