@@ -258,6 +258,13 @@ CH 6 - TREES
         the tree.  
 
 
+    class Node:
+        def __init__(self, data):
+            self.data = data
+            self.right_child = None
+            self.left_child = None
+
+
     class BST:
         def __init__(self):
             self.root_node = None
@@ -273,3 +280,27 @@ CH 6 - TREES
             while current.right_child:
                 current = current.right_child
             return current
+
+
+
+- Inserting in a BST
+
+        def insert(self, data):
+            node = Node(data)
+            if self.root_node is None:
+                self.root_node = node
+            else:
+                current = self.root_node
+                parent = None
+                while True:
+                    parent = current
+                    if node.data < parent.data:
+                        current = current.left_child
+                        if current is None:
+                            parent.left_child = node
+                            return
+                    else:
+                        current = current.right_child
+                        if current is None:
+                            parent.right_child = node
+                            return
