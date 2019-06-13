@@ -65,7 +65,7 @@ CH 4 - LISTS AND POINTER STRUCTURES
 
         def append(self, data):
             node = Node(data)
-            if self.tail = None
+            if self.tail is None
                 self.tail = node
             else:
                 current = self.tail
