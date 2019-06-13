@@ -1,6 +1,7 @@
 from .node import Node
 
 class SinglyLinkedList:
+    
     def __init__(self):
         self.head = None
         self.tail = None
@@ -14,7 +15,7 @@ class SinglyLinkedList:
         else:
             self.tail = node
             self.head = node
-        self.size += 1
+        self.count += 1
 
     def iter(self):
         current = self.tail
