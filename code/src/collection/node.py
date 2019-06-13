@@ -4,4 +4,4 @@ class Node:
         self.next = None
 
     def __str__(self):
-        return str(data)
+        return str(self.data)
