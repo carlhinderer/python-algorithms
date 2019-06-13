@@ -22,3 +22,27 @@ class SinglyLinkedList:
             val = current.data
             current = current.next
             yield val
+
+    def delete(self, data):
+        current = self.tail
+        prev = self.tail
+        while current:
+            if current.data == data:
+                if current == self.tail:
+                    self.tail = current.next
+                else:
+                    prev.next = current.next
+                self.count -= 1
+                return
+            prev = current
+            current = current.next
+
+    def search(self, data):
+        for node in self.iter():
+            if data == node:
+                return True
+        return False
+
+    def clear(self):
+        self.tail = None
+        self.head = None
