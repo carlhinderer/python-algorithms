@@ -27,7 +27,7 @@ CH 4 - LISTS AND POINTER STRUCTURES
             self.data = data
             self.next = None
 
-        def _str_(self):
+        def __str__(self):
             return str(data)
 
 
@@ -50,7 +50,7 @@ CH 4 - LISTS AND POINTER STRUCTURES
     >>> n1.next = n2
     >>> n2.next = n3
 
-    >>> current n1
+    >>> current = n1
     >>> while current:
             print(current.data)
             current = current.next
