@@ -1,7 +1,7 @@
 from .node import Node
 
 class SinglyLinkedList:
-    
+
     def __init__(self):
         self.head = None
         self.tail = None
@@ -47,3 +47,4 @@ class SinglyLinkedList:
     def clear(self):
         self.tail = None
         self.head = None
+        self.count = 0

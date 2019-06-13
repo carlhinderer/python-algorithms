@@ -1,5 +1,4 @@
 from src.collection.singly_linked_list import *
-from src.collection.node import *
 import pytest
 
 class TestSinglyLinkedList:
@@ -11,38 +10,47 @@ class TestSinglyLinkedList:
         assert l.count == 0
 
     def test_append(self):
-        node1 = Node('abc')
-        node2 = Node('def')
         l = SinglyLinkedList()
 
         # Empty list
-        l.append(node1)
-        assert str(l.head) == str(node1)
-        assert str(l.tail) == str(node1)
+        l.append('abc')
+        assert l.head.data == 'abc'
+        assert l.tail.data == 'abc'
         assert l.count == 1
 
         # Nonempty list
-        l.append(node2)
-        assert str(l.head) == str(node2)
-        assert str(l.tail) == str(node1)
+        l.append('def')
+        assert l.head.data == 'def'
+        assert l.tail.data == 'abc'
         assert l.count == 2
 
     def test_iterator(self):
-        node1 = Node('abc')
-        node2 = Node('def')
         l = SinglyLinkedList()
-        l.append(node1)
-        l.append(node2)
+        l.append('abc')
+        l.append('def')
 
-        data_list = [str(data) for data in l.iter()]
+        data_list = [data for data in l.iter()]
         assert data_list == ['abc', 'def']
 
     def test_delete(self):
-        assert 0 == 0
+        l = SinglyLinkedList()
+        l.append('abc')
+
+        l.delete('abc')
+        # assert l.head is None
+        # assert l.tail is None
+        assert l.count == 0
 
     def test_search(self):
-        assert 0 == 0
+        l = SinglyLinkedList()
+        l.append('abc')
 
+        assert l.search('abc') == True
+        assert l.search('def') == False
 
     def test_clear(self):
-        assert 0 == 0
+        l = SinglyLinkedList()
+        l.append('abc')
+        l.clear()
+
+        assert l.count == 0
