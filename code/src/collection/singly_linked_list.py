@@ -26,16 +26,16 @@ class SinglyLinkedList:
 
     def delete(self, data):
         current = self.tail
-        prev = self.tail
+        previous = self.tail
         while current:
             if current.data == data:
                 if current == self.tail:
                     self.tail = current.next
                 else:
-                    prev.next = current.next
+                    previous.next = current.next
                 self.count -= 1
                 return
-            prev = current
+            previous = current
             current = current.next
 
     def search(self, data):

@@ -37,8 +37,7 @@ class TestSinglyLinkedList:
         l.append('abc')
 
         l.delete('abc')
-        # assert l.head is None
-        # assert l.tail is None
+        assert l.tail is None
         assert l.count == 0
 
     def test_search(self):
@@ -53,4 +52,6 @@ class TestSinglyLinkedList:
         l.append('abc')
         l.clear()
 
+        assert l.head is None
+        assert l.tail is None
         assert l.count == 0
