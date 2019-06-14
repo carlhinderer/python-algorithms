@@ -1,4 +1,4 @@
-from .node import Node
+from .single_node import SingleNode
 
 class SinglyLinkedList:
 
@@ -8,7 +8,7 @@ class SinglyLinkedList:
         self.count = 0
 
     def append(self, data):
-        node = Node(data)
+        node = SingleNode(data)
         if self.head:
             self.head.next = node
             self.head = node

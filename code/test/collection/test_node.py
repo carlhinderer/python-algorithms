@@ -1,12 +1,12 @@
-from src.collection.node import *
+from src.collection.single_node import *
 import pytest
 
-class TestNode:
+class TestSingleNode:
     def test_constructor(self):
-        node = Node('abc')
+        node = SingleNode('abc')
         assert node.data == 'abc'
         assert node.next is None
 
     def test_string_conversion(self):
-        node = Node(123)
+        node = SingleNode(123)
         assert str(node) == '123'
