@@ -1,4 +1,4 @@
-from src.collection.singly_linked_list import *
+from src.collection.singly_linked_list import SinglyLinkedList
 import pytest
 
 class TestSinglyLinkedList:

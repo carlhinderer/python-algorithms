@@ -1,4 +1,4 @@
-from src.collection.single_node import *
+from src.collection.single_node import SingleNode
 import pytest
 
 class TestSingleNode:

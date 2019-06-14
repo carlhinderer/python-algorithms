@@ -1,4 +1,4 @@
-from src.collection.double_node import *
+from src.collection.double_node import DoubleNode
 import pytest
 
 class TestDoubleNode:
