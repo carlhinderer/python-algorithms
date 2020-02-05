@@ -1,0 +1,41 @@
+--------------------------------------------------------
+CH 5 - TRAVERSAL - THE SKELETON KEY OF ALGORITHMICS
+--------------------------------------------------------
+
+- Walking Through a Connected Component Using Adjancency Sets
+
+- Finding Connected Components
+
+- Seven Bridges of Konigsberg
+
+- No Cycles Allowed
+
+- Recursive Tree Traversal
+
+- How to Stop Walking in Circles
+
+- Recursive DFS
+
+- Iterative DFS
+
+- General Graph Traversal Function
+
+- DFS With Timestamps
+
+- Topological Sorting Based on DFS
+
+- Node Colors and Edge Types
+
+- Infinite Mazes and Shortest Unweighted Paths
+
+- Iterative Deepening DFS
+
+- BFS
+
+- Black Box: Deque
+
+- Strongly Connected Components
+
+- Kosaraju's Algorithm for Finding Strongly Connected Components
+
+- Goals and Pruning

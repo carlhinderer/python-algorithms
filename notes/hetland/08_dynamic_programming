@@ -1,0 +1,53 @@
+--------------------------------------------------------
+CH 8 - TANGLED DEPENDENCIES & MEMOIZATION
+--------------------------------------------------------
+
+- Dynamic Programming
+
+- Naive Solution to Incresing Subsequence Problem
+
+- Don't Repeat Yourself
+
+- A Memoizing Decorator
+
+- Pascal's Triangle
+- 
+- Shortest Paths in DAGs
+
+- Recursive, Memoized DAG Shortest Path
+
+- DAG Shortest Path
+
+- Varieties of DAG Shortest Path
+
+- Longest Increasing Subsequence
+
+- Memoized Recursive Solution to Longest Increasing Subsequence
+
+- Iterative Solution to Longest Increasing Subsequence
+
+- Longest Increasing Subsequence
+
+- Sequence Comparison
+
+- Memoized Recursive Solution to Longest Common Subsequence
+
+- Iterative Solution to Longest Common Subsequence
+
+- The Knapsack Problem, Revisited
+
+- Memoized Recursive Solution to Unbounded Integer Knapsack Problem
+
+- Iterative Solution to Unbounded Integer Knapsack Problem
+
+- Memoized Recursive Solution to the 0-1 Knapsack Problem
+
+- Iterative Solution to the 0-1 Knapsack Problem
+
+- Binary Sequence Partitioning
+
+- Optimal Search Trees
+
+- Memoized Recursive Solution for Expected Optimal Search Cost
+
+- Iterative Solution to Optimal Search Tree Problem

@@ -1,0 +1,49 @@
+--------------------------------------------------------
+CH 6 - DIVIDE, COMBINE, & CONQUER
+--------------------------------------------------------
+
+- Tree-Shaped Problems: All About the Balance
+
+- The Canonical Divide and Conquer Algorithm
+
+- Searching By Halves
+
+- Black Box: Bisect
+
+- Traversing Search Trees with Pruning
+
+- Insertion and Search in a BST
+
+- Sorted Arrays, Trees, and Dicts
+
+- Selection
+
+- Straightforward Implementation of Partition and Select
+
+- Selecting in Linear Time, Guaranteed
+
+- Sorting By Halves
+
+- Quicksort
+
+- Mergesort
+
+- Black Box: Timsort
+
+- How Fast Can We Sort?
+
+- Closest Pair
+
+- Convex Hull
+
+- How Fast Can We Find a Convex Hull?
+
+- Greatest Slice
+
+- Multiprocessing
+
+- Tree Balance and Balancing
+
+- BST, Now With AA-Tree Rebalancing
+
+- Black Box: Binary Heaps, Heapq, and Heapsort
