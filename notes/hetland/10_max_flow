@@ -1,0 +1,37 @@
+--------------------------------------------------------
+CH 10 - MAX FLOW
+--------------------------------------------------------
+
+- The Max Flow Problem
+
+- Bipartite Matching
+
+- Finding a Maximum Bipartite Matching Using Augmenting Paths
+
+- Disjoint Paths
+
+- Counting Edge-Disjoint Paths Using Labeling Traversal
+
+- Maximum Flow
+
+- Finding Augmenting Paths with BFS and Labeling
+
+- The Ford-Fulkerson Method
+
+- Residual Networks
+
+- Minimum Cut
+
+- Duality
+
+- Cheapest Flow and the Assignment Problem
+
+- The Busacker-Gowen Algorithm, Using Bellman-Ford for Augmentations
+
+- Some Applications
+
+    - Baseball Elimination
+    - Choosing Representatives
+    - Doctors on Vacation
+    - Supply and Demand
+    - Consistent Matrix Rounding

@@ -1,0 +1,41 @@
+--------------------------------------------------------
+CH 9 - SHORTEST PATHS
+--------------------------------------------------------
+
+- The Shortest Path Problem
+
+- Propogating Knowledge
+
+- The Relaxation Operation
+
+- Relaxing Like Crazy
+
+- The Bellman-Ford Algorithm
+
+- Finding the Hidden DAG
+
+- Dijkstra's Algorithm
+
+- All Against All
+
+- Johnson's Algorithm
+
+- Far-Fetched Subproblems
+
+- Memoized Recursive Implementation of Floyd-Warshall Algorithm
+
+- The Floyd-Warshall Algorithm, Distances Only
+
+- The Floyd-Warshall Algorithm
+
+- Meeting in the Middle
+
+- Dijkstra's Algorithm Implemented as a Generator
+
+- The Bidirectional Version of Dijkstra's Algorithm
+
+- Knowing Where You're Going
+
+- The A* Algorithm
+
+- An Implicit Graph with Word Ladder Paths
