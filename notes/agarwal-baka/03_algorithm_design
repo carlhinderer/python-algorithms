@@ -157,7 +157,7 @@ CH 3 - ALGORITHM DESIGN
 
 - Amortized Analysis
 
-    Often, we are more interested in the average running time or an algorith, rather
+    Often, we are more interested in the average running time of an algorithm, rather
       than the worst case.  This is called amortized analysis.
 
     For instance, we can take the state change of data structures into account, assuming
