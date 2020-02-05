@@ -1,0 +1,52 @@
+--------------------------------------------------------
+CH 4 - INDUCTION, RECURSION, & REDUCTION
+--------------------------------------------------------
+
+- Induction, Recursion, & Reduction
+
+- Oh, That's Easy
+
+- One, Two, Many
+
+- Mirror, Mirror
+
+- Implementing the Checkerboard Covering
+
+- Recursive and Iterative Insertion Sort
+
+- Recursive and Iterative Selection Sort
+
+- But Where is the Reduction?
+
+- Designing with Induction and Recursion
+
+- Finding a Maximum Permutation
+
+- Counting Sort
+
+- The Celebrity Problem
+
+- Solution to the Celebrity Problem
+
+- Topological Sorting
+
+- Naive Solution to Topological Sorting
+
+- Topological Sorting of a DAG
+
+- Black Box: Topological Sorting and Python's MRO
+
+- Stronger Assumptions
+
+- Reverse Induction and Powers of Two
+
+- Invariants and Correctness
+
+- Relaxation and Gradual Improvement
+
+- Reduction + Contraposition = Hardness Proof
+
+- Problem Solving Advice
+    1. Make sure you really understand the problem
+    2. Look for a reduction
+    3. Are there extra assumptions you can exploit?
