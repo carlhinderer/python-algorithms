@@ -2,3 +2,41 @@
 CH 1 - INTRODUCTION
 --------------------------------------------------------
 
+- What This Book is About
+
+    1. Algorithm analysis
+    2. Basic principles of algorithm design
+    3. How to represent commonly used data structures in Python
+    4. How to implement well-known algorithms in Python
+
+
+  What This Book Covers Only Briefly
+
+    1. Algorithms that are already directly available in Python
+    2. Thorough and deep formalism
+
+
+  What This Book Isn't About
+
+    1. Numerical or number-theoretical algorithms
+    2. Parallel algorithms and multicore programming
+
+
+
+- First Experiment
+
+    # Add numbers to list, then reverse it
+    # Runs in linear time
+
+    >>> count = 10**5
+    >>> nums = []
+    >>> for i in range(count):
+            nums.append(i)
+    >>> nums.reverse()
+
+
+    # Instead of reversing at the end, insert numbers at beginning
+    # Runs in quadratic time
+
+    >>> for i in range(count):
+            nums.insert(0, i)
