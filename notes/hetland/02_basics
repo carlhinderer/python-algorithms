@@ -4,11 +4,105 @@ CH 2 - THE BASICS
 
 - Core Ideas in Computing
 
-- Asymptotic Notation
+    - Alan Turing, mid 1930s
+
+        'On computable numbers, with an application to the Entscheidungsproblem'
+
+        - A Turing machine can read from, write to, and move along an infinitely
+            long strip of paper.  Each implementation of the machine is a 
+            Finite State Machine.
+
+
+    - An 'algorithm' is a procedure consisting of a finite set op steps, possibly
+        including loops and conditionals, that solves a given problem.  A 'Turing
+        machine' is a formal description of exactly what problem the algorithm
+        solves.  
+
+
+    - For modern machines, we assume we can access memory directly in a random-access
+        fashion, rather than scrolling along a paper tape.  We assume that modern
+        machines have these constraints:
+
+        1. The machine executes instructions on after another.  We don't have access
+             to any form of concurrent execution.
+
+        2. Standard, basic operations like arithmetic, comparison, and memory access
+             all take constant time.
+
+        3. One computer word is not unlimited, but is big enough to address all the
+             memory locations used to represent our problem.
+
+
+    - We can often define the input and outputs of our algorithm in terms of relations.
+        A relation (in the mathematical sense) is a set of pairs.
+
+      For instance, the problem of sorting may be specified as a relations between
+        2 sets A and B, each consisting of sequences.
+
+
 
 - Black Box: Lists
 
-- Asymptotics Example
+    - Note that Python lists are actually arrays.  If you did want to make a linked
+        list in Python:
+
+        # Singly linked list
+        class Node:
+            def __init__(self, value, next=None):
+                self.value = value
+                self.next = next
+
+
+        # Use the list
+        >>> L = Node('a', Node('b', Node('c', Node('d'))))
+        >>> L.next.next.value
+        'c'
+
+
+    - Python lists being implemented as arrays is the reason inserting at the left side 
+        of the array is quadratic time.  We have to move all the elements to the right 
+        first (linear), then insert the element at the beginning.  
+
+      Specifically, Python lists are dynamic arrays, which grow as more elements are added.
+        The ideally is to initially allocate an array that is too big, and reallocate it
+        in linear time whenever it overflows.  We don't have to do this on every append,
+        so we can amortize the cost of resizing based on how often it occurs.
+
+
+
+- Asymptotics
+
+    - O(n)     Upper Bound
+      Ω(n)     Lower Bound
+      Θ(n)     Tight Bound
+
+
+    - Common Asymptotic Running Times
+
+        Complexity        Name            Examples, Comments
+        --------------------------------------------------------------
+        Θ(1)              Constant        Hash table lookup and modification (see 
+                                            “Black Box” sidebar on dict).
+
+        Θ(lg n)           Logarithmic     Binary search. Logarithm base unimportant.
+
+        Θ(n)              Linear          Iterating over a list.
+
+        Θ(n lg n)         Loglinear       Optimal sorting of arbitrary values. Same 
+                                            as Θ(lg n!).
+
+        Θ(n2)             Quadratic       Comparing n objects to each other.
+
+        Θ(n3)             Cubic           Floyd and Warshall’s algorithms.
+
+        O(nk)             Polynomial      k nested for loops over n (if k is a positive 
+                                            integer). For any constant k > 0.
+
+        Ω(kn)             Exponential     Producing every subset of n items. Any k > 1.
+
+        Θ(n!)             Factorial       Producing every ordering of n values.
+
+
 
 - Three Important Cases
 
