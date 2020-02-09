@@ -104,6 +104,74 @@ CH 2 - THE BASICS
 
 
 
+    - The polynomial and exponential classes are special, since they separate tractable
+        and intractable problems.  Basically, an algorithm with a polynomial running time
+        is considered feasible, while an exponential one is generally useless.
+
+
+
+- Example - Determining Complexity
+
+    - Find the complexity of:
+
+        nums.append(1)
+        nums.insert(0, 2)
+
+
+    - For the individual lines:
+
+        nums.append(1)         # O(1) time
+        nums.insert(0, 2)      # O(n) time
+
+      For the statements together:
+
+        O(1) + O(n) = O(n
+
+
+
+- Example - Determining Complexity with Loops
+
+    - Find the complexity of:
+
+        sum = 0
+        for x in range(n):
+            sum += x
+
+
+    - For the individual lines:
+
+        sum = 0                # O(1)
+        for x in range(n):     # n loop iterations
+            sum += x           # O(1)
+
+      For the statements together:
+
+        O(1) + n O(1) = O(n)
+
+
+
+- Complexity in Loops
+
+    - For nested loops:
+
+        for x in range(n):
+            for y in range(n):
+                for z in range(n):
+                    s += (x+y-z)
+
+      Running time:
+
+        O(n) * O(n) * O(n) = O(n**3)
+
+
+    - Remember, when analyzing running times, that there all hidden loops all over the
+        place in Python.
+
+        # Hidden loop here
+        squares = [x**2 for x in range(n)]
+
+
+
 - Three Important Cases
 
 - Empirical Evaluation of Algorithms
