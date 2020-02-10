@@ -74,14 +74,75 @@ CH 3 - COUNTING
 
 
 
-- Recursion and Recurrences
+- Recurrence Relations
 
-- Recurrence Relations By Hand
+    - Here is a recursive function with linear running time:
+
+        def sum(seq, i=0):
+            if i == len(seq): return 0
+            return sum(seq, i+1) + seq[i]
+
+
 
 - Examples of Recurrence Relations
 
-- Guessing and Checking
+    #    Recurrence             Solution        Example Applications
+    ----------------------------------------------------------------------------------
+    1    T(n) = T(n-1) + 1      Θ(n)            Processing a sequence
+    2    T(n) = T(n-1) + n      Θ(n**2)         Handshake problem
+    3    T(n) = 2T(n-1) + 1     Θ(2n)           Towers of Hanoi
+    4    T(n) = 2T(n-1) + n     Θ(2n)
+    5    T(n) = T(n/2) + 1      Θ(lg n)         Binary search
+    6    T(n) = T(n/2) + n      Θ(n)            Randomized select, average case
+    7    T(n) = 2T(n/2) + 1     Θ(n)            Tree traversal
+    8    T(n) = 2T(n/2) + n     Θ(n lg n)       Sorting by divide and conquer
 
-- Special Case of Recurrence Relations
+
 
 - The Master Theorem
+
+    - Recurrences corresponding to many divide-and-conquer algorithms have the 
+        following form (where a >= 1 and b > 1):
+
+        T(n) = aT(n/b) + f(n)
+
+
+      You have:
+        - a recursive calls, 
+        - each on a given percentage (1/b) of the dataset
+        - In addition to the recursive calls, the algorithm does f(n) units of work
+
+
+
+- Example: MergeSort
+
+    - Here is an implementation of merge sort:
+
+        def mergesort(seq):
+            mid = len(seq)//2
+            lft, rgt = seq[:mid], seq[mid:]
+            if len(lft) > 1: lft = mergesort(lft)
+            if len(rgt) > 1: rgt = mergesort(rgt)
+            res = []
+            while lft and rgt:
+                if lft[-1] >=rgt[-1]:
+                    res.append(lft.pop())
+                else:
+                    res.append(rgt.pop())
+            res.reverse()
+            return (lft or rgt) + res    
+
+
+    - In each iteration, we have:
+
+        - 2 recursive subproblems (a = 2)
+        - each subproblem on half the data (b = 2)
+        - Θ(n) work being done in the while loop and reverse()
+
+      So we get the recurrence relation:
+
+        T(n) = 2T(n/2) + Θ(n)
+
+      We know that the running time, regardless of the input, is:
+
+        Θ(n lg n)
