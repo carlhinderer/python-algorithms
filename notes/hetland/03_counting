@@ -4,13 +4,75 @@ CH 3 - COUNTING
 
 - Sums
 
+   - Laws of Sums
+
+       # Multiplicative constants can be moved in or out of sums
+       x*sum(S) == sum(x*y for y in S)
+
+       # Instead of adding 2 sums, you can sum their added contents
+       sum(f(i) for i in S) + sum(g(i) for i in S) == sum(f(i) + g(i) for i in S)
+
+
+
 - A Tale of Two Tournaments
+
+    - There are 2 types of combinatorial problems you will often see basic algorithms:
+
+        1. Round robin = each contestant meets each of the others in turn
+        2. Knockout = competitors are arranged in pairs, and the winner goes to next round
+
+
     - Shaking Hands
+
+        - The round robin problem is also known as the handshake problem.  If there are n
+            people attending a conference, and they all shake hands, how many handshakes
+            are there?
+
+            (n * (n-1)) / 2
+
+
     - The Hare and the Tortoise
 
-- Subsets, Permutations, and Combinations
+        - Let's say we have n knights, and in each round only half of them go into the 
+            next round.  How many rounds do we need to get a winner?
+
+            i = log(2)(n-1)
+
+
 
 - Pseudopolynomiality
+
+    - There are certain algorithms with exponential running time, but look like they
+        polynomial times.
+
+      For instance, we want to check whether a number is prime.  Here is an intuitive
+        solution, which is nonpolynomial.
+
+        def is_prime(n):
+            for i in range(2, n):
+                if i % i == 0: return False
+            return True
+
+
+      It might seem like this is O(n), since we check n numbers.  However, the problem
+        instance consisting of n is not n, but rather the number of bits needed to 
+        encode n.
+
+      Since it takes k = floor(log(n,2))+1 bits to encode n, this algorithm is actually 
+        Θ(2**k).  That is why these algorithms are called pseudopolynomial.
+
+
+
+- Permutations and Combinations
+
+    - Permutations are orderings.  If n people line up, there are n! possible orderings
+        of them.
+
+    - Combinations are different subsets drawn from a set.
+
+        C(n, k) = n! / (k! * (n-k)!)
+
+
 
 - Recursion and Recurrences
 
