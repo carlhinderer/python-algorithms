@@ -278,6 +278,103 @@ CH 2 - THE BASICS
 
 - Adjacency Lists
 
+    - For each node, we can access a list of its neighbors.
+
+        # Simple adjacency list representation
+        >>> a, b, c, d, e, f, g, h = range(8)
+
+        # Represents nodes with sets
+        >>> N = [
+                {b, c, d, e, f},    # a
+                {c, e},             # b
+                {d},                # c
+                {e},                # d
+                {f},                # e
+                {c, g, h},          # f
+                {f, h},             # g
+                {f, g}              # h
+            ]
+
+        # Neighborhood membership
+        >>> b in N[a]
+        True
+
+        # Degree
+        >>> len(N[f])
+        3
+
+
+    - We could also use lists instead of sets to represent's each node's neighbors.
+        The same operations are available, but membership checking is now O(n).
+
+      This is a significant slowdown, but is only a problem if you need membership
+        checking.  If you don't, using lists will be more efficient since they have
+        less overhead.
+
+        >>> N = [
+                [b, c, d, e, f],    # a
+                [c, e],             # b
+                [d],                # c
+                [e],                # d
+                [f],                # e
+                [c, g, h],          # f
+                [f, h],             # g
+                [f, g]              # h
+            ]
+
+
+    - A recurring theme when working with graphs is that the best representation 
+        depends on what you need to do with your graph.  
+
+      For instance, using lists for neighbors allows you to efficiently iterate over
+        any node's neighbors.  However, checking whether u and v are neighbors
+        is linear in their degrees, which may be problematic if the graph is dense.
+        If the graph is dense, sets may be better.
+
+
+    - We could also use dicts instead of sets or lists to store the node neighbors.
+        This allows us to associate some extra value, such as weight, to each edge.
+
+        >>> N = [
+                {b:2, c:1, d:3, e:9, f:4},    # a
+                {c:4, e:3},                   # b
+                {d:8},                        # c
+                {e:7},                        # d
+                {f:5},                        # e
+                {c:2, g:2, h:2},              # f
+                {f:1, h:6},                   # g
+                {f:9, g:8}                    # h
+            ]
+
+        # Neighborhood membership
+        >>> b in N[a]
+        True
+
+        # Degree
+        >>> len(N[f])
+        3
+
+        # Edge weight for (a, b)
+        >>> N[a][b]
+        2
+
+
+    - So far, we have used a list for the set of adjacency structures.  We could use a
+        dict for that too, if we want.
+
+        >>> N = {
+                'a': set('bcdef'),
+                'b': set('ce'),
+                'c': set('d'),
+                'd': set('e'),
+                'e': set('f'),
+                'f': set('cgh'),
+                'g': set('fh'),
+                'h': set('fg')
+            }
+
+
+
 - Adjacency Matrices
 
 - Special-Purpose Arrays with Numpy
