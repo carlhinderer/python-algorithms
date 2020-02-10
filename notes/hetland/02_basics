@@ -499,12 +499,104 @@ CH 2 - THE BASICS
 
 - The Bunch Pattern
 
-- A Multitude of Representations
+    - When prototyping data structures, it's useful to have a flexible class
+        that will allow you to specify arbitrary attributes in the constructor.
+
+        # Bunch implementation
+        class Bunch(dict):
+            def __init__(self, *args, **kwds):
+                super(Bunch, self).__init__(*args, **kwds)
+                self.__dict__ = self
+
+        # Use the bunch
+        >>> x = Bunch(name="Jayne Cobb", position="Public Relations")
+        >>> x.name
+        'Jayne Cobb'
+
+
 
 - Graph Libraries
 
-- Beware of Black Boxes
+    - There are a number of graph libraries with lots of operations and performance
+        optimizations available.  These include:
+
+        1. NetworkX
+        2. python-graph
+        3. Graphine
+        4. Graph-tool
+
+
+    - Other graph tools include:
+
+        - Pygr (graph database)
+        - Gato (graph animation toolbox)
+        - PADS (collection of graph algorithms)
+
+
 
 - Hidden Squares
 
+    - Looking for an element in a list
+
+        >>> from random import randrange
+
+        # Linear time lookup
+        >>> L = [randrange(10000) for i in range(1000)]
+        >>> 42 in L
+        False
+
+        # Constant time lookup
+        >>> S = set(L)
+        >>> 42 in S
+        False
+
+
+    - Gradually building a string
+
+        # Quadratic, since we have to keep creating new strings
+        >>> s = ''
+        >>> for chunk in string_producer():
+                s += chunk
+
+
+        # Linear, since we amortize the array resizing
+        >>> chunks = []
+        >>> for chunk in string_producer():
+                chunks.append(chunk)
+        >>> s = ''.join(chunks)
+
+        # Or to make it more concise
+        >>> s = ''.join(string_producer())
+
+
+
 - The Trouble with Floats
+
+    - Floating point comparisons have caused many computer errors over the years.
+
+        >>> sum(0.1 for i in range(10)) == 1.0
+        False
+
+
+    - Instead of checking if floating point numbers are equal, you should check
+        whether they are approximately equal.
+
+        >>> def almost_equal(x, y, places=7):
+                return round(abs(x-y), places) == 0
+
+        >>> almost_equal(sum(0.1 for i in range(10)), 1.0)
+        True
+
+
+    - The Decimal type handles a lot of these issues automatically.
+
+        >>> from decimal import *
+        >>> sum(Decimal('0.1') for i in range(10)) == Decimal('1.0')
+        True
+
+
+    - The 'Sage' library uses symbolic math rather than floating point math.  This
+        means it is much slower, but produces exact results rather than decimal
+        approximations.
+
+        >>> sage: 3/5 * 11/7 + sqrt(5239)
