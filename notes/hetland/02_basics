@@ -174,11 +174,107 @@ CH 2 - THE BASICS
 
 - Three Important Cases
 
-- Empirical Evaluation of Algorithms
+    1. Best Case
+         Input is optimally suited to your algorithm 
 
-- Implementing Graphs and Trees
+    2. Worst Case
+         The worst possible running time, usually the most useful case
+
+    3. Average Case
+         Expected value of the running time, for random input.
+
+
+
+- Tips For Empirical Evaluation of Algorithms
+
+    1. Unless it is critical to the problem you are solving, don't worry about
+         running time.  The vast majority of problems can be solved sufficiently
+         with brute-force approaches.
+
+
+    2. For timing things, use timeit.
+
+         >>> import timeit
+         >>> timeit.timeit("x = 2 + 2")
+         >>> timeit.timeit("x = sum(range(10))")
+
+
+    3. To find bottlenecks, use a profiler.
+
+         >>> import cProfile
+         >>> cProfile.run('main()')
+
+
+    4. Plot your results to visualize your algorithm's performance.
+
+
+
+- Graphs and Trees
+
+    - Graphs are used to represent all kinds of structures and systems, like:
+
+        - Transportation and communication networks
+        - Protein interactions in cell nuclei
+        - Human interactions online
+
+
+    - You can increase the expressiveness by adding extra data such as weights and
+        distances.  This makes it possible to represent such diverse problems as
+        playing chess or matching jobs to candidates.
+
+
+    - Graph Basics
+
+        1. A graph G = (V, E) consists of 
+             V, a set of vertices and
+             E, the set of edges between them
+
+           If the edges have a direction, we say the graph is directed.
+
+
+        2. Nodes with an edge between them are 'adjacent'.
+           The edge is 'incident' to both of them.
+           Nodes adjacent to a vertex are 'neighbors' of the vertex.
+           The 'degree' of a node is the number of edges incident to it.
+
+
+        3. A subgraph of G = (V, E) consists of a subset of V and a subset of E.
+           A 'path' in G is a subgraph where the edges connect the nodes in a
+             sequence, without revisiting any node.
+           A 'cycle' is like a path, except the last edge links the last node to 
+             the first.
+
+
+        4. If we associate a 'weight' with each edge in G, we say that G is a
+             'weighted graph'.  The 'length' of a path or cycle is the sum of its
+             edge weights (or just the number of edges if the edges are unweighted).
+
+
+        5. A 'forest' is a cycle-free graph, and a connected forest is a 'tree'.  In
+             other words, a forest consists of one or more trees.
+
+
 
 - Black Box: Dict and Set
+
+    - 'Hashing' involves computing an integer value from an arbitrary object.
+        This value can then be used as an index into an array, for example.
+
+      The standard hashing mechanism in Python is available through the 'hash'
+        function.
+
+        >>> hash(42)
+        42
+
+        >>> hash('Hello, world!')
+        -1886531940
+
+
+    - Dictionaries and sets are implemented using hash tables.  The hash value can
+        be constructed in constant time.  So, we can assume that accessing elements
+        of a 'dict' or 'set' can be expected to take constant time.
+
+
 
 - Adjacency Lists
 
