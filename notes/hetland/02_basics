@@ -443,11 +443,59 @@ CH 2 - THE BASICS
 
 - Special-Purpose Arrays with Numpy
 
+    - The NumPy array type is quite useful and has a lot of functionality 
+        related to multidimensional arrays.
+
+        >>> import numpy as np
+        >>> N = np.zeros([10, 10])
+
+
+
 - Implementing Trees
+
+    - There are many graph operations (such as searching) that can be implemented
+        easier with specialized tree structures.
+
+        # Represent a tree with a list of lists
+        >>> T = [["a", "b"], ["c"], ["d", ["e", "f"]]]
+
+        >>> T[0][1]
+        'b'
+
+        >>> T[2][1][0]
+        'e'
+
+
 
 - Binary Tree Class
 
+    # Binary tree implementation
+    class Tree:
+        def __init__(self, left, right):
+            self.left = left
+            self.right = right
+
+    # Use the binary tree
+    >>> t = Tree(Tree("a", "b"), Tree("c", "d"))
+    >>> t.right.left
+    'c'
+
+
+
 - Multiway Tree Class
+
+    # Multiway tree implementation
+    class Tree:
+        def __init__(self, kids, next=None):
+            self.kids = self.val = kids
+            self.next = next
+
+    # Use the multiway tree
+    >>> t = Tree(Tree("a", Tree("b", Tree("c", Tree("d")))))
+    >>> t.kids.next.next.val
+    'c'
+
+
 
 - The Bunch Pattern
 
