@@ -13,7 +13,7 @@ CH 2 - THE BASICS
             Finite State Machine.
 
 
-    - An 'algorithm' is a procedure consisting of a finite set op steps, possibly
+    - An 'algorithm' is a procedure consisting of a finite set of steps, possibly
         including loops and conditionals, that solves a given problem.  A 'Turing
         machine' is a formal description of exactly what problem the algorithm
         solves.  
@@ -23,7 +23,7 @@ CH 2 - THE BASICS
         fashion, rather than scrolling along a paper tape.  We assume that modern
         machines have these constraints:
 
-        1. The machine executes instructions on after another.  We don't have access
+        1. The machine executes instructions one after another.  We don't have access
              to any form of concurrent execution.
 
         2. Standard, basic operations like arithmetic, comparison, and memory access
@@ -125,7 +125,7 @@ CH 2 - THE BASICS
 
       For the statements together:
 
-        O(1) + O(n) = O(n
+        O(1) + O(n) = O(n)
 
 
 
