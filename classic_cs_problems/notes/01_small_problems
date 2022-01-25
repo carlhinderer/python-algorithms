@@ -79,7 +79,8 @@
 
     - If we want to store DNA data, where all we need is a sequence of characters in 
         ['A', 'C', 'G', 'T'], using a string or integer type has a lot of unnnecessary overhead.
-        We could store it as a bit string instead, for instance.
+        We could store it as a bit string instead, for instance.  In this case, we'll use 2 bits
+        per character instead of 8 with a Unicode string.
 
         A 00
         C 01
@@ -87,4 +88,30 @@
         T 11
 
 
-    - 
+    - Note that we'll use a single int to keep track of the entire bit string, since a Python int
+        can be any size.
+
+
+
+- Unbreakable Encryption
+
+    - In this example, we encrypt a string using a one-time pad.
+
+
+        Original Data \                           Key 1 (Dummy Data)
+                       ---->    ENCRYPTION   ---
+        Dummy Data    /            (XOR)         \---->  Key 2 (Product)
+
+
+
+        Key 1 (Dummy Data)  \
+                            ---->    DECRYPTION   ----->  Original Data
+        Key 2 (Product)     /          (XOR)
+
+
+    - Note that it is once again useful to put all of our byte data into a single int variable,
+        since it makes it easy to perform bitwise operations on the entire bit string.
+
+
+    - The 'encode' method converts a string to a sequence of UTF-8 bytes.  The 'decode' method
+        converts a sequence of bytes to a string.
