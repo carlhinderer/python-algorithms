@@ -1,0 +1,37 @@
+------------------------------------------------------------------------------------
+| CHAPTER 2 - SEARCH PROBLEMS                                                      |
+------------------------------------------------------------------------------------
+
+- Storing DNA
+
+    - Genes are commonly represented as a series of characters ['A', 'C', 'G', 'T'], which
+        each represent a nucleotide.  A group of 3 nucleotides is called a 'codon'.
+
+      A classic task in bioinformatics software is to find a particular codon within a gene.
+
+
+    - We'll represent a nucleotide using an 'IntEnum'.  We're using this instead of a regular
+        enum because we get comparison operators for free.
+
+        Nucleotide = IntEnum('Nucleotide', ('A', 'C', 'G', 'T'))
+
+
+    - We can treat a gene as a list of codons.
+
+
+
+- Linear Search
+
+    - Linear search is O(n).
+
+        def linear_contains(gene, key_codon):
+            for codon in gene:
+                if codon == key_codon:
+                    return True
+            return False
+
+
+
+- Binary Search
+
+    - We can use binary search on a sorted list.  In this case, it is O(log n).
