@@ -115,3 +115,9 @@
 
     - The 'encode' method converts a string to a sequence of UTF-8 bytes.  The 'decode' method
         converts a sequence of bytes to a string.
+
+
+
+- Calculating Pi
+
+    - 
