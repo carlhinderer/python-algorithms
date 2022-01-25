@@ -120,4 +120,23 @@
 
 - Calculating Pi
 
-    - 
+    - There are many ways to calculate pi.  One of the simplest is the Leibniz formula,
+        which states that this series converges to pi:
+
+        pi = 4/1 - 4/3 + 4/5 - 4/7 + 4/9 - 4/11 + ...
+
+
+
+
+- The Towers of Hanoi
+
+    - This is a famous recursion problem that is solved using stacks, since their LIFO nature
+        lends itself well to the problem.  We'll model a stack using a Python list.
+
+
+    - The key to solving the problem is to think about moving a single disc at a time, which is
+        the base case.  Then, we can think of moving more than one disc, the recursive case.
+
+
+    - This solution will grow exponentially with the number of discs, so solving the problem 
+        become untenable as n grows large.
