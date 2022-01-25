@@ -72,3 +72,19 @@
             for _ in range(1, n):
                 last, next = next, last + next
                 yield next
+
+
+
+- Trivial Compression
+
+    - If we want to store DNA data, where all we need is a sequence of characters in 
+        ['A', 'C', 'G', 'T'], using a string or integer type has a lot of unnnecessary overhead.
+        We could store it as a bit string instead, for instance.
+
+        A 00
+        C 01
+        G 10
+        T 11
+
+
+    - 
