@@ -35,3 +35,52 @@
 - Binary Search
 
     - We can use binary search on a sorted list.  In this case, it is O(log n).
+
+        def binary_contains(gene, key_codon):
+            low = 0
+            high = len(gene) - 1
+            while low <= high:
+                mid = (low + high) // 2
+                if gene[mid] < key_codon:
+                    low = mid + 1
+                elif gene[mid] > key_codon:
+                    high = mid - 1
+                else:
+                    return True
+            return False
+
+
+
+- Representing a Maze
+
+    - Finding a path through a maze is analagous to many common search problems.  Our maze will
+        be a 2D grid of cells.
+
+        class Cell(str, Enum):
+            EMPTY = " "
+            BLOCKED = "X"
+            START = "S"
+            GOAL = "G"
+            PATH = "*"
+
+        MazeLocation = namedtuple('MazeLocation', ['row', 'column'])
+
+
+
+- Generating a Random Maze
+
+    - We'll represent the state of the maze internally with a list of lists.  By default, our
+        maze will be fairly sparse (20% blocked).
+
+        class Maze:
+            # Initialize the grid
+            def __init__(self, rows=10, columns=10, sparseness=0.2, start=(0, 0), goal=(9, 9))
+
+            # Randomly add blocked spaces
+            def _randomly_fill(self, rows, columns, sparseness)
+
+            # Determine whether we have reached the goal space
+            def goal_test(self, m1)
+
+            # Determines which spaces we can move to from our current space
+            def successors(self, m1)
