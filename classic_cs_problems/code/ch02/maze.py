@@ -1,8 +1,7 @@
 from collections import namedtuple
 from enum import Enum
-from math import sqrt
+# from math import sqrt
 
-import pdb
 import random
 
 
@@ -54,6 +53,7 @@ class Maze:
             locations.append(MazeLocation(ml.row, ml.column + 1))
         if ml.column - 1 >= 0 and self._grid[ml.row][ml.column - 1] != Cell.BLOCKED:
             locations.append(MazeLocation(ml.row, ml.column - 1))
+            
         return locations
 
     def __str__(self):

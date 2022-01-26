@@ -84,3 +84,36 @@
 
             # Determines which spaces we can move to from our current space
             def successors(self, m1)
+
+
+
+- Depth-First Search
+
+    - With depth-first search, we go as deeply as we can before backtracking to the last decision
+        point if it reaches a dead end.
+
+
+    - We'll rely on stacks, which we'll implement using Python lists.
+
+        class Stack:
+            def __init__(self):
+                self._container = []
+
+            @property
+            def empty(self):
+                return not self._container
+
+            def push(self, item):
+                return self._container.append(item)
+
+            def pop(self):
+                return self._container.pop()   # LIFO
+
+            def __repr__(self):
+                return repr(self._container)
+
+
+    - We'll also need a 'Node' class to keep track of how we got from one place to another as
+        we search.
+
+        
