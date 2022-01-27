@@ -165,3 +165,59 @@
 
 
     - The algorithm for BFS is identical to DFS, just using a queue rather than a stack.
+
+
+
+- A* Search
+
+    - Like a BFS, an A* search aims to find a shortest path.  However, it uses a combination of
+        a cost function and a heuristic function to get to the goal more quickly.
+
+        The total cost is f(n).
+
+        The cost function, g(n), examines the cost to get to a particular state.
+
+        The heuristic function, h(n), gives an estimate of the cost to get from the state in
+          question to the goal state.
+
+        f(n) = g(n) + h(n)
+
+
+
+- Priority Queues
+
+    - To pick the state on the frontier with the lowest f(n), an A* search uses a priority queue
+        as the data structure for it's frontier.  
+
+
+    - A priority queue keeps its elements in an internal order, such that the first element popped 
+        out is always the highest-priority element. (In our case, the highest-priority item is the 
+        one with the lowest f( n).)
+
+
+    - Usually this means the internal use of a binary heap, which results in O(lg n) pushes and 
+        O(lg n) pops.
+
+
+    - Python's standard library contains 'heappush()' and 'heappop()' that will take a list and
+        maintain it as a binary heap.
+
+
+        from heapq import heappush, heappop
+
+        class PriorityQueue:
+            def __init__(self):
+                self._container = []
+
+            @property
+            def empty(self):
+                return not self._container
+
+            def push(self, item):
+                heappush(self._container, item)      # In by priority
+
+            def pop(self):
+                return heappop(self._container)      # Out by priority
+
+            def __repr__(self):
+                return repr(self._container)
