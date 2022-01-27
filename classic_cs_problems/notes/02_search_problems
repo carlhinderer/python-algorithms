@@ -296,3 +296,17 @@
                         frontier.push(Node(child, current_node, new_cost, heuristic(child)))
 
             return None
+
+
+
+- Missionaries and Cannibals
+
+    - We want to solve a problem in which 3 missionaries and 3 cannibals are on the west bank
+        of a river.
+
+      They have a canoe that can hold 2 people, and they all must cross to the east bank of the
+        river.  There can never be more cannibals than missionaries on either side of the river.
+
+
+    - We'll represent the problem by keeping track of what's on the west bank.  That way, we can
+        just subtract it to get what's on the east bank.
