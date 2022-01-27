@@ -1,6 +1,7 @@
 from collections import namedtuple
 from enum import Enum
 # from math import sqrt
+from generic_search import dfs, node_to_path, Node
 
 import random
 
@@ -39,10 +40,10 @@ class Maze:
                 if random.uniform(0, 1.0) < sparseness:
                     self._grid[row][column] = Cell.BLOCKED
 
-    def goal_test(self, m1):
-        return m1 == self.goal
+    def goal_test(self, ml):
+        return ml == self.goal
 
-    def successors(self, m1):
+    def successors(self, ml):
         locations = []
 
         if ml.row + 1 < self._rows and self._grid[ml.row + 1][ml.column] != Cell.BLOCKED:
@@ -53,8 +54,20 @@ class Maze:
             locations.append(MazeLocation(ml.row, ml.column + 1))
         if ml.column - 1 >= 0 and self._grid[ml.row][ml.column - 1] != Cell.BLOCKED:
             locations.append(MazeLocation(ml.row, ml.column - 1))
-            
+
         return locations
+
+    def mark(self, path):
+        for maze_location in path:
+            self._grid[maze_location.row][maze_location.column] = Cell.PATH
+        self._grid[self.start.row][self.start.column] = Cell.START
+        self._grid[self.goal.row][self.goal.column] = Cell.GOAL
+
+    def clear(self, path):
+        for maze_location in path:
+            self._grid[maze_location.row][maze_location.column] = Cell.EMPTY
+            self._grid[self.start.row][self.start.column] = Cell.START
+            self._grid[self.goal.row][self.goal.column] = Cell.GOAL
 
     def __str__(self):
         output = ""
@@ -64,5 +77,18 @@ class Maze:
 
 
 if __name__ == '__main__':
-    maze = Maze()
-    print(maze)
+    m = Maze()
+    print('Maze Initial State')
+    print(m)
+
+    # Test DFS
+    dfs_solution = dfs(m.start, m.goal_test, m.successors)
+
+    if dfs_solution is None:
+        print('No solution found using depth-first search.')
+    else:
+        path = node_to_path(dfs_solution)
+        m.mark(path)
+        print('Maze With Solution')
+        print(m)
+        m.clear(path)

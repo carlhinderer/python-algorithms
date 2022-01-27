@@ -116,4 +116,16 @@
     - We'll also need a 'Node' class to keep track of how we got from one place to another as
         we search.
 
-        
+        class Node:
+            def __init__(self, state, parent, cost, heuristic):
+                self.state = state
+                self.parent = parent
+                self.cost = cost
+                self.heuristic = heuristic
+
+            def __lt__(self, other):
+                return (self.cost + self.heuristic) < (other.cost + other.heuristic)
+
+
+    - We can think of the 'Node' class as a wrapper around a state.  In the case of our maze-solving
+        problem, those states are type 'MazeLocation'.
