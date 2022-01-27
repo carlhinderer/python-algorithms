@@ -221,3 +221,37 @@
 
             def __repr__(self):
                 return repr(self._container)
+
+
+
+- Heuristics
+
+    - A heuristic is an intuition about the way to solve a problem.  In the case of maze solving,
+        it aims to choose the next location that will get us closest to the goal.
+
+
+    - The Euclidean distance is the straight line distance (via the Pythagorean theorem) between
+        2 points.  
+
+        def euclidean_distance(goal):
+            def distance(ml):
+                xdist = ml.column - goal.column
+                ydist = ml.row - goal.row
+                return sqrt((xdist * xdist) + (ydist * ydist))
+
+            return distance
+
+
+    - The Manhattan distance is the distance between 2 points without using diagonals.
+
+        def manhattan_distance(goal):
+            def distance(ml):
+                xdist = abs(m1.columnn - goal.column)
+                ydist = abs(m1.row - goal.row)
+                return (xdist + ydist)
+
+            return distance
+
+
+    - Note that using Manhattan distance will give us the best results in our maze solving, since
+        we can only move vertically and horizontally.

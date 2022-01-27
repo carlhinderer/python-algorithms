@@ -1,6 +1,7 @@
 from collections import namedtuple
 from enum import Enum
-# from math import sqrt
+from math import sqrt
+
 from generic_search import bfs, dfs, node_to_path, Node
 
 import random
@@ -75,6 +76,23 @@ class Maze:
             output += "".join([c.value for c in row]) + "\n"
         return output
 
+
+def euclidean_distance(goal):
+    def distance(ml):
+        xdist = ml.column - goal.column
+        ydist = ml.row - goal.row
+        return sqrt((xdist * xdist) + (ydist * ydist))
+
+    return distance
+
+
+def manhattan_distance(goal):
+    def distance(ml):
+        xdist = abs(m1.columnn - goal.column)
+        ydist = abs(m1.row - goal.row)
+        return (xdist + ydist)
+
+    return distance
 
 
 if __name__ == '__main__':
