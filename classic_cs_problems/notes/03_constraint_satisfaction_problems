@@ -16,3 +16,37 @@
 
     - Languages like Prolog have facilities for solving CSPs built in.  For other languages,
         we have to build out a framework ourselves.
+
+
+
+- Building a CSP Framework
+
+    - The constraint-satisfaction framework will use a simple backtracking search to find
+        solutions to problems.  Backtracking means when you hit a wall, you go back to the
+        previous decision point.
+
+        class CSP:
+            ...
+            def backtracking_search(self, assignment):
+                # Assignment is complete if every variable is assigned
+                if len(assignment) == len(self.variables):
+                    return assignment
+
+                # Get all variables in the CSP but not in the assignment
+                unassigned = [v for v in self.variables if v not in assignment]
+
+                # Get every possible domain value of the first unassigned variable
+                first = unassigned[0]
+                for value in self.domains[first]:
+                    local_assignment = assignment.copy()
+                    local_assignment[first] = value
+
+                    # If we're still consistent, we recurse
+                    if self.consistent(first, local_assignment):
+                        result = self.backtracking_search(local_assignment)
+
+                        # If we didn't find the result, we will end up backtracking
+                        if result is not None:
+                            return result
+
+                return None

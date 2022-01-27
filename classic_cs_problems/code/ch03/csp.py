@@ -31,3 +31,27 @@ class CSP:
             if not constraint.satisfied(assignment):
                 return False
         return True
+
+    def backtracking_search(self, assignment):
+        # Assignment is complete if every variable is assigned
+        if len(assignment) == len(self.variables):
+            return assignment
+
+        # Get all variables in the CSP but not in the assignment
+        unassigned = [v for v in self.variables if v not in assignment]
+
+        # Get every possible domain value of the first unassigned variable
+        first = unassigned[0]
+        for value in self.domains[first]:
+            local_assignment = assignment.copy()
+            local_assignment[first] = value
+
+            # If we're still consistent, we recurse
+            if self.consistent(first, local_assignment):
+                result = self.backtracking_search(local_assignment)
+
+                # If we didn't find the result, we will end up backtracking
+                if result is not None:
+                    return result
+
+        return None
