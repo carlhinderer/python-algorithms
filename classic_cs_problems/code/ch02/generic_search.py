@@ -38,7 +38,22 @@ class Queue:
         return repr(self._container)
 
 
+class PriorityQueue:
+    def __init__(self):
+        self._container = []
 
+    @property
+    def empty(self):
+        return not self._container
+
+    def push(self, item):
+        heappush(self._container, item)      # In by priority
+
+    def pop(self):
+        return heappop(self._container)      # Out by priority
+
+    def __repr__(self):
+        return repr(self._container)
 
 
 class Node:
@@ -97,6 +112,29 @@ def bfs(initial, goal_test, successors):
                 continue
             explored.add(child)
             frontier.push(Node(child, current_node))
+
+    return None
+
+
+def astar(initial, goal_test, successors, heuristic):
+    frontier = PriorityQueue()
+    frontier.push(Node(initial, None, 0.0, heuristic(initial)))
+
+    explored = {initial: 0.0}
+
+    while not frontier.empty:
+        current_node = frontier.pop()
+        current_state = current_node.state
+
+        if goal_test(current_state):
+            return current_node
+
+        for child in successors(current_state):
+            new_cost = current_node.cost + 1         # Adding 1 assumes a grid
+
+            if child not in explored or explored[child] > new_cost:
+                explored[child] = new_cost
+                frontier.push(Node(child, current_node, new_cost, heuristic(child)))
 
     return None
 

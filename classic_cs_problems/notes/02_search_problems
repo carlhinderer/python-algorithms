@@ -255,3 +255,44 @@
 
     - Note that using Manhattan distance will give us the best results in our maze solving, since
         we can only move vertically and horizontally.
+
+
+
+- The A* Algorithm
+
+    - To go from BFS to A* search, we have to make a few modifications.
+
+        1. We need to use a priority queue as the frontier instead of a regular queue.
+
+        2. We'll change the explored set to a dictionary, and we'll keep track of the lowest cost
+             of each node we may want to visit.
+
+        3. Some nodes may be visited twice.  If we find a new path with a lower cost, we should
+             prefer the new route.
+
+
+    - For the sake of simplicity, we're not taking a cost function as a parameter.  For our 
+        purposes, we just assume every hop in our maze has a cost of 1.
+
+
+        def astar(initial, goal_test, successors, heuristic):
+            frontier = PriorityQueue()
+            frontier.push(Node(initial, None, 0.0, heuristic(initial)))
+
+            explored = {initial: 0.0}
+
+            while not frontier.empty:
+                current_node = frontier.pop()
+                current_state = current_node.state
+
+                if goal_test(current_state):
+                    return current_node
+
+                for child in successors:
+                    new_cost = current_node.cost + 1         # Adding 1 assumes a grid
+
+                    if child not in explored or explored[child] > new_cost:
+                        explored[child] = new_cost
+                        frontier.push(Node(child, current_node, new_cost, heuristic(child)))
+
+            return None

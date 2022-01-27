@@ -2,7 +2,7 @@ from collections import namedtuple
 from enum import Enum
 from math import sqrt
 
-from generic_search import bfs, dfs, node_to_path, Node
+from generic_search import astar, bfs, dfs, node_to_path, Node
 
 import random
 
@@ -88,8 +88,8 @@ def euclidean_distance(goal):
 
 def manhattan_distance(goal):
     def distance(ml):
-        xdist = abs(m1.columnn - goal.column)
-        ydist = abs(m1.row - goal.row)
+        xdist = abs(ml.column - goal.column)
+        ydist = abs(ml.row - goal.row)
         return (xdist + ydist)
 
     return distance
@@ -121,5 +121,18 @@ if __name__ == '__main__':
         path = node_to_path(bfs_solution)
         m.mark(path)
         print('Maze With BFS Solution\n')
+        print(m)
+        m.clear(path)
+
+    # Test A*
+    distance = manhattan_distance(m.goal)
+    astar_solution = astar(m.start, m.goal_test, m.successors, distance)
+
+    if astar_solution is None:
+        print('No solution found using A* search.')
+    else:
+        path = node_to_path(astar_solution)
+        m.mark(path)
+        print('Maze With A* Solution\n')
         print(m)
         m.clear(path)
