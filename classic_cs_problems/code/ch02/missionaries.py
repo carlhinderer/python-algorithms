@@ -8,6 +8,9 @@ On the west bank there are {} missionaries and {} cannibals.\n
 On the east bank there are {} missionaries and {} cannibals.\n
 The boat is on the {} bank."""
 
+EAST_TO_WEST_MSG = "{} missionaries and {} cannibals moved from the east bank to the west bank.\n"
+WEST_TO_EAST_MSG = "{} missionaries and {} cannibals moved from the west bank to the east bank.\n"
+
 
 class MCState:
     def __init__(self, missionaries, cannibals, boat):
@@ -65,6 +68,30 @@ class MCState:
         return [x for x in sucs if x.is_legal]
 
 
+def display_solution(path):
+    if len(path) == 0: return
+
+    old_state = path[0]
+    print(old_state)
+
+    for current_state in path[1:]:
+        if current_state.boat:
+            print(EAST_TO_WEST_MSG.format(old_state.em - current_state.em, 
+                                          old_state.ec - current_state.ec))
+        else:
+            print(WEST_TO_EAST_MSG.format(old_state.wm - current_state.wm,
+                                          old_state.wc - current_state.wc))
+        print(current_state)
+        old_state = current_state
+
+
+
 if __name__ == '__main__':
-    mcs = MCState(3, 3, True)
-    print(mcs)
+    start = MCState(MAX_NUM, MAX_NUM, True)
+    solution = bfs(start, MCState.goal_test, MCState.successors)
+
+    if solution is None:
+        print("No solution found.")
+    else:
+        path = node_to_path(solution)
+        display_solution(path)
