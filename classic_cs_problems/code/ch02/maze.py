@@ -1,7 +1,7 @@
 from collections import namedtuple
 from enum import Enum
 # from math import sqrt
-from generic_search import dfs, node_to_path, Node
+from generic_search import bfs, dfs, node_to_path, Node
 
 import random
 
@@ -76,9 +76,10 @@ class Maze:
         return output
 
 
+
 if __name__ == '__main__':
     m = Maze()
-    print('Maze Initial State')
+    print('Maze Initial State \n')
     print(m)
 
     # Test DFS
@@ -89,6 +90,18 @@ if __name__ == '__main__':
     else:
         path = node_to_path(dfs_solution)
         m.mark(path)
-        print('Maze With Solution')
+        print('Maze With DFS Solution\n')
+        print(m)
+        m.clear(path)
+
+    # Test BFS
+    bfs_solution = bfs(m.start, m.goal_test, m.successors)
+
+    if bfs_solution is None:
+        print('No solution found using breadth-first search.')
+    else:
+        path = node_to_path(bfs_solution)
+        m.mark(path)
+        print('Maze With BFS Solution\n')
         print(m)
         m.clear(path)

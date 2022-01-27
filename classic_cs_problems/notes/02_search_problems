@@ -129,3 +129,39 @@
 
     - We can think of the 'Node' class as a wrapper around a state.  In the case of our maze-solving
         problem, those states are type 'MazeLocation'.
+
+
+
+- Breadth-First Search
+
+    - BFS always finds the shortest path by systematically looking one layer of nodes farther 
+        away from the start state in each iteration of the search.
+
+
+    - DFS will usually find a solution more quickly, while BFS will find the shortest path, so
+        that is a trade off in choosing which to use.
+
+
+    - To implement BFS, we'll need queues.  Since we'll be removing from the left end of the
+        data structure (FIFO) rather that the right side (LIFO stacks), we'll be using a Python
+        deque rather than a list.  A deque can efficiently pop from either side.
+
+        class Queue:
+            def __init__(self):
+                self._container = Deque()
+
+            @property
+            def empty(self):
+                return not self._container
+
+            def push(self, item):
+                self._container.append(item)
+
+            def pop(self):
+                self._container.popleft()      # FIFO
+
+            def __repr__(self):
+                return repr(self._container)
+
+
+    - The algorithm for BFS is identical to DFS, just using a queue rather than a stack.
