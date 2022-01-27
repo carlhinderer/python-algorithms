@@ -1,0 +1,18 @@
+------------------------------------------------------------------------------------
+| CHAPTER 3 - CONSTRAINT SATISFACTION PROBLEMS                                     |
+------------------------------------------------------------------------------------
+
+- Constraint Satisfaction Problems
+
+    - CSPs are composed of 'variables' with possible values that fall into ranges known 
+        as 'domains'.  The 'constraints' must be satisfied in order for the problems to be
+        solved.
+
+
+    - For an example, suppose you have to schedule a meeting with 3 people, each of whom have
+        different windows of time they are available.  Scheduling problems are a classic
+        example of CSPs.
+
+
+    - Languages like Prolog have facilities for solving CSPs built in.  For other languages,
+        we have to build out a framework ourselves.
