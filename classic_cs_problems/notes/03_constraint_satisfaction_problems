@@ -53,6 +53,13 @@
 
 
 
-- Map Coloring Problem
+- The Map Coloring Problem
+
+    - Our first simple constraint satisfaction problem is to color each province in Australia
+        with one of 3 colors.  No 2 provinces the same color touch each other.  
+
+
+
+- The Eight Queens Problem
 
     - 
