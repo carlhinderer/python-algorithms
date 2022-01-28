@@ -1,3 +1,5 @@
+from abc import abstractmethod
+
 
 class Constraint:
     def __init__(self, variables):
@@ -32,7 +34,7 @@ class CSP:
                 return False
         return True
 
-    def backtracking_search(self, assignment):
+    def backtracking_search(self, assignment={}):
         # Assignment is complete if every variable is assigned
         if len(assignment) == len(self.variables):
             return assignment
