@@ -62,4 +62,15 @@
 
 - The Eight Queens Problem
 
-    - 
+    - The eight queens problem poses the question of how to put 8 queens on a chessboard without
+        any queen being able to attack any other queen.
+
+
+
+- The Word Search Problem
+
+    - A word search is a type of constraint satisfaction problem.  The variables are the words,
+        and the domains are the possible locations of the words.
+
+
+    - For the sake of simplicity, our word search will not have words that overlap.
