@@ -1,0 +1,412 @@
+-----------------------------------------------------------------------------
+| CHAPTER 1 - INTRODUCTION                                                  |
+-----------------------------------------------------------------------------
+
+- Procuedural Abstraction
+
+    - We call a function, which is a black box, and we assume it will return the correct results.
+
+        import math
+        math.sqrt(16)
+
+
+
+- Programming
+
+    - Programming is the process of taking an algoritm and encoding it into a notation (a PL) so
+        that it can be executed by a computer.
+
+
+    - At a minimum, algorithms require:
+
+        1. Sequential processing
+        2. Selection for decision-making
+        3. Iteration for repetitive control
+
+
+
+- Data Structures and Abstract Data Types
+
+    - Similarly to how we use procedural abstraction, we also have data abstraction.  An 'abstract
+        data type' (ADT) is a logical description of how we view the data and operations without
+        regards to implementation.
+
+    - The implementation of an ADT, often called a 'data structure', requires that we provide a 
+        physical view of the data using some collection of programming constructs and primitive
+        data types.
+
+    - Separating these 2 perspectives will give us an implementation-independent view of the data.
+
+
+
+- Built-in Atomic Data Types
+
+    - Two main numeric classes [int float]
+    - Arithmetic operators [+ - * / % // **]
+    - When 2 integers are divided, result is floating point
+    - Booleans [True False]
+
+    - Relational Operators [< > <= >= == !=]
+    - Logical Operators [and or not]
+
+
+
+- Lists
+
+    - A list is an ordered, heterogeneous collection of zero or more references to Python data 
+        objects.
+
+        my_list = [1, 3, True, 6.5]
+
+
+    - Operations that can be used on any sequence in Python:
+
+        Index                []
+        Concatenation        +
+        Repetition           *
+        Membership           in
+        Length               len
+        slicing              [:]
+
+
+    - List Methods
+
+        append         a_list.append(item)         Adds a new item to the end of a list
+
+        insert         a_list.insert(i,item)       Inserts an item at the ith position in a list
+
+        pop            a_list.pop()                Removes and returns the last item in a list
+
+        pop            a_list.pop(i)               Removes and returns the ith item in a list
+
+        sort           a_list.sort()               Sorts a list in place
+
+        reverse        a_list.reverse()            Modifies a list to be in reverse order
+
+        del            del a_list[i]               Deletes the item in the ith position
+
+        index          a_list.index(item)          Returns the index of the first occurrence of item
+
+        count          a_list.count(item)          Returns the number of occurrences of item
+
+        remove         a_list.remove(item)         Removes the first occurrence of item
+
+
+    - Lists are common used with the 'range' operator, which produces a sequence of integers.
+
+        list(range(10, 1, -1))
+
+
+
+- Strings
+
+    - Strings are sequential collections of zero or more characters.
+
+
+    - String Methods:
+
+        center         a_string.center(w)          Returns a string centered in a field of size w
+
+        count          a_string.count(item)        Returns the number of occurrences of item in the string
+
+        ljust          a_string.ljust(w)           Returns a string left-justified in a field of size w
+
+        lower          a_string.lower()            Returns a string in all lowercase
+
+        rjust          a_string.rjust(w)           Returns a string right-justified in a field of size w
+
+        find           a_string.find(item)         Returns the index of the first occurrence of item
+
+        split          a_string.split(s_char)      Splits a string into substrings at s_char
+
+
+    - Lists are mutable.  Strings are immutable.
+
+
+
+- Tuples
+
+    - Tuples are immutable, heterogeneous sequences of data.
+
+        my_tuple = (2, True, 4.96)
+
+
+    - Tuples have all the same sequence operations as above.
+
+
+
+- Sets
+
+    - Sets are unordered collections or zero or more Python data objects.  Sets do not allow
+        duplicates.
+
+        my_set = {3, 6, "cat", 4.5, False}
+
+
+    - Set Operations:
+
+        membership     in                          Set membership
+
+        length         len                         Returns the cardinality of the set
+
+        |              a_set | other_set           Returns a new set with all elements from both sets
+
+        &              a_set & other_set           Returns a new set with only elements common to both sets
+
+        -              a_set - other_set           Returns a new set with items from first not in second
+
+        <=             a_set <= other_set          Asks whether all elements of the first are in second
+
+
+    - Set Methods:
+
+        union          a_set.union(other_set)      Returns a new set with all elements from both sets
+
+        intersection   a_set.intersection(other_set)  Returns a new set with only elements common to both
+
+        difference     a_set.difference(other_set)  Returns a new set with all items from first not in second
+
+        issubset       a_set.issubset(other_set)    Asks whether all elements of one set are in the other
+
+        add            a_set.add(item)              Adds item to the set
+
+        remove         a_set.remove(item)           Removes item from the set
+
+        pop            a_set.pop()                  Removes an arbitrary element from the set
+
+        clear          a_set.clear()                Removes all elements from the set
+
+
+
+- Dictionaries
+
+    - Dictionaries are collections of key-value pairs.  Before Python 3.6, they were unordered.  Since
+        3.6, they maintain their order, so the pairs appear in the order they were inserted.
+
+        capitals = {"Iowa": "Des Moines", "Wisconsin": "Madison"}
+
+
+    - Dictionary Operators
+
+        []            a_dict[k]                     Returns value associated with k, otherwise its an error
+
+        in            key in a_dict                 Returns True if key is in dictionary, False otherwise
+
+        del           del a_dict[key]               Removes the entry from the dictionary
+
+
+    - Dictionary Methods
+
+        keys          a_dict.keys()                 Returns keys of the dictionary in a dict_keys object
+
+        values        a_dict.values()               Returns values of the dictionary in a dict_values object
+
+        items         a_dict.items()                Returns the key-value pairs in a dict_items object
+
+        get           a_dict.get(k)                 Returns value associated with k, None otherwise
+
+        get           a_dict.get(k, alt)            Returns value associated with k, alt otherwise
+
+
+
+- Input and Output
+
+    - The 'input' method gives you a prompt in the console.
+
+        a_name = input("Please enter your name ")
+
+
+    - The 'print' statement:
+
+        print("Hello")
+        print("Hello", "World")
+        print("Hello", "World", sep="***")
+        print("Hello", "World", end="***")
+
+
+    - Using the % format operator:
+
+        print("%s is %d years old." % (a_name, age))
+
+        Options
+        -------------------------------
+        d, i          # Integers
+        u             # Unsigned integers
+        f,e,E         # Floating point
+        g             # Large exponents
+        c             # Single character
+        s             # String, or anything that can be converted to a string
+
+        Additional formatting options
+        -------------------------------
+        number        # Put value in field with width number
+        -             # Left-justify
+        +             # Right-justify
+        0             # Fill with leading zeros
+        .             # Number of decimal places
+        (name)        # Get value from supplied dictionary using name as key
+
+
+    - Using the 'format' method:
+
+        print("The {} costs {} cents".format(item, price))
+        print("The {:s} costs {:d} cents".format(item, price))
+
+
+    - Using f-strings (Python 3.6+)
+
+        print(f"The {item:10} costs {price:10.2f} cents")
+        print(f"The {item:<10} costs {price:<10.2f} cents")
+        print(f"The {item:>10} costs {price:>010.2f} cents")
+
+        Options
+        -------------------------------
+        number        # Put value in field with width number
+        <             # Left-justify
+        >             # Right-justify
+        0             # Fill with leading zeros
+        .             # Number of decimal places
+
+
+
+- Control Structures
+
+    # While loop
+    while counter <= 5:
+        print('Counter')
+        counter = counter + 1
+
+    # For loop
+    for iten in [1, 3, 6, 2, 5]:
+        print(item)
+
+    # Branch
+    if cond1:
+        ....
+    elif cond2:
+        ....
+    else:
+        ....
+
+    # List comprehension
+    sq_list = [x * x for x in range(1, 11) if x % 2 != 0]
+
+
+
+- Exception Handling
+
+    # Try/catch
+    try:
+        print(math.sqrt(a_number))
+    except:
+        print("Bad value for the square root function")
+
+    # Raise exception explicitly
+    raise RuntimeError('You can't use a negative number.')
+
+
+
+- Defining Functions
+
+    # Define a function
+    def square(n):
+        return n**2
+
+
+
+- Creating a Class
+
+    def gcd(m, n):
+        while m % n != 0:
+            m, n = n, m % n
+        return n
+
+    # Example class
+    class Fraction:
+        def __init__(self, top, bottom):
+            self.num = top
+            self.den = bottom
+
+        def show(self):
+            print(f"{self.num}/{self.den}")
+
+        def __add__(self, other_fraction):
+            new_num = self.num * other_fraction.den + self.den * other_fraction.num
+            new_den = self.den * other_fraction.den
+            common = gcd(new_num, new_den)
+            return Fraction(new_num // common, new_den // common)
+
+        def __eq__(self, other_fraction):
+            first_num = self.num * other_fraction.den
+            second_num = other_fraction.num * self.den
+            return first_num == second_num
+
+        def __str__(self):
+            return f"{self.num}/{self.den}"
+
+
+    # Use the class
+    f1 = Fraction(1, 4)
+    f2 = Fraction(1, 2)
+    f3 = f1 + f2
+
+    print(f3)
+
+
+
+- Using Inheritance
+
+    # Base Class
+    class LogicGate:
+        def __init__(self, lbl):
+            self.label = lbl
+            self.output = None
+
+        def get_label(self):
+            return self.label
+
+        def get_output(self):
+            self.output = self.perform_gate_logic()
+            return self.output
+
+
+    # Subclass
+    class BinaryGate(LogicGate):
+        def __init__(self, lbl):
+            LogicGate.__init__(self, lbl)
+            self.pin_a = None
+            self.pin_b = None
+
+        def get_pin_a(self):
+            return int(input(f"Enter pin A input for gate {self.get_label()}: "))
+
+        def get_pin_b(self):
+            return int(input(f"Enter pin B input for gate {self.get_label()}: "))
+
+
+    # Subclass
+    class UnaryGate(LogicGate):
+        def __init__(self, lbl):
+            LogicGate.__init__(self, lbl)
+            self.pin = None
+
+        def get_pin(self):
+            return int(input(f"Enter pin input for gate \
+                {self.get_label()}: "))
+
+
+    # Subclass (uses equivalent 'super' in constructor instead)
+    class AndGate(BinaryGate):
+        def __init__(self, lbl):
+            super().__init__(lbl)
+
+        def perform_gate_logic(self):
+            a = self.get_pin_a()
+            b = self.get_pin_b()
+            if a == 1 and b == 1:
+                return 1
+            else:
+                return 0
+
+
+    - Full version that can be used to connect gates in 'code/ch01/circuit_simulation.py'.
