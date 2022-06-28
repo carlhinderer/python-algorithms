@@ -6,8 +6,11 @@ def gcd(m, n):
 
 class Fraction:
     def __init__(self, top, bottom):
-        self.num = top
-        self.den = bottom
+        if bottom == 0:
+            raise ZeroDivisionError
+        cmmn = gcd(top, bottom)
+        self.num = top // cmmn
+        self.den = bottom // cmmn
 
     def __str__(self):
         return "{:d}/{:d}".format(self.num, self.den)
@@ -19,19 +22,30 @@ class Fraction:
         return first_num == second_num
 
     def __add__(self, other_fraction):
-        new_num = self.num * other_fraction.den \
-        + self.den * other_fraction.num
+        new_num = self.num * other_fraction.den + self.den * other_fraction.num
         new_den = self.den * other_fraction.den
-        cmmn = gcd(new_num, new_den)
-        return Fraction(new_num // cmmn, new_den // cmmn)
+        return Fraction(new_num, new_den)
+
+    def __sub__(self, other_fraction):
+        new_num = self.num * other_fraction.den - self.den * other_fraction.num
+        new_den = self.den * other_fraction.den
+        return Fraction(new_num, new_den)
+
+    def  __mul__(self, other_fraction):
+        new_num = self.num * other_fraction.num
+        new_den = self.den * other_fraction.den
+        return Fraction(new_num, new_den)
+
+    def __truediv__(self, other_fraction):
+        new_num = self.num * other_fraction.den
+        new_den = self.den * other_fraction.num
+        return Fraction(new_num, new_den)
 
     def show(self):
         print("{:d}/{:d}".format(self.num, self.den))
 
+    def get_num(self):
+        return self.num
 
-x = Fraction(1, 2)
-x.show()
-y = Fraction(2, 3)
-print(y)
-print(x + y)
-print(x == y)
+    def get_den(self):
+        return self.den
