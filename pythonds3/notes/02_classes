@@ -1,0 +1,82 @@
+-----------------------------------------------------------------------------
+| CHAPTER 2 - A PROPER CLASS                                                |
+-----------------------------------------------------------------------------
+
+- Rules for Good Python Classes
+
+    - Basic Rules:
+
+        1. Each class should include a docstring with some level of documentation
+
+        2. Each class should have a '__str__' magic method to give it a meaningful representation.
+
+        3. Each class should have a '__repr__' magic method for representation in the debugger.
+
+        4. Each class should be comparable, so it can be compared with other instances and sorted.
+             At a minimum, this means implementing '__eq__' and '__lt__'.
+
+        5. You should think about access control for each instance variable.
+
+
+    - If you class is a container for other classes, it should also follow these rules:
+
+        1. You should be able to find out the count in the container using 'len'.
+
+        2. You should be able to iterate over items in the container.
+
+        3. You may want to allow users to access items using [] notation.
+
+
+
+- Here is an example that follows our guidelines:
+
+    class MSDie:
+        """
+        Multi-sided die
+
+        Instance Variables:
+            current_value
+            num_sides
+
+        """
+
+        def __init__(self, num_sides):
+            self.num_sides = num_sides
+            self.current_value = self.roll()
+
+        def roll(self):
+            self.current_value = random.randrange(1,self.num_sides+1)
+            return self.current_value
+
+        def __str__(self):
+            return str(self.current_value)
+
+        def __repr__(self):
+            return "MSDie({}) : {}".format(self.num_sides, self.current_value)
+
+        def __eq__(self,other):
+            return self.current_value == other.current_value
+
+        def __lt__(self,other):
+            return self.current_value < other.current_value
+
+        def __le__(self, other):
+            return self.current_value <= other.current_value
+
+
+
+- And we can use our class:
+
+    x = MSDie(6)
+    y = MSDie(7)
+
+    x.current_value = 6
+    y.current_value = 5
+
+    print(x == y)
+    print(x < y)
+    print(x > y)
+    print(x != y)
+    print(x <= y)
+    print(x >= y)
+    print(x is y)
