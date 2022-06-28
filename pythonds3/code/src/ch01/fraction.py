@@ -25,6 +25,9 @@ class Fraction:
     def __str__(self):
         return "{:d}/{:d}".format(self.num, self.den)
 
+    def __repr__(self):
+        return "Fraction: Num {:d}/Den {:d}".format(self.num, self.den)
+
     def __eq__(self, other_fraction):
         first_num = self.num * other_fraction.den
         second_num = other_fraction.num * self.den

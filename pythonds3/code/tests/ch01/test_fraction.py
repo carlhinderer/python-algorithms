@@ -59,6 +59,10 @@ def test_str():
     f1 = Fraction(1, 4)
     assert str(f1) == '1/4'
 
+def test_repr():
+    f1 = Fraction(1, 4)
+    assert repr(f1) == 'Fraction: Num 1/Den 4'
+
 def test_add():
     f1 = Fraction(1, 4)
     f2 = Fraction(1, 4)
