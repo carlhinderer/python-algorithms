@@ -15,7 +15,7 @@ class Deck:
     RANKS = list(range(2, 11)) + ['J', 'Q', 'K', 'A']
 
     def __init__(self):
-        self.cards = [Card(suit, rank) for suit in self.SUITS for rank in self.RANKS]
+        self.cards = [Card(s, r) for s in self.SUITS for r in self.RANKS]
 
     def shuffle(self):
         random.shuffle(self.cards)
@@ -82,6 +82,8 @@ class Game:
                 winner = 'Tie'
             else:
                 winner = 'Player'
+
+        print(winner)
 
     def update_deck(self):
         if self.hands_used_in_deck >= self.NUM_HANDS_PER_DECK:

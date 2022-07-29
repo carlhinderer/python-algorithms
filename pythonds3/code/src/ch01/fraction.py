@@ -34,13 +34,17 @@ class Fraction:
         return first_num == second_num
 
     def __gt__(self, other_fraction):
-        return (self.num / self.den) > (other_fraction.num / other_fraction.den)
+        self_as_float = self.num / self.den
+        other_as_float = other_fraction.num / other_fraction.den
+        return self_as_float > other_as_float
 
     def __ge__(self, other_fraction):
         return self > other_fraction or self == other_fraction
 
     def __lt__(self, other_fraction):
-        return (self.num / self.den) < (other_fraction.num / other_fraction.den)
+        self_as_float = self.num / self.den
+        other_as_float = other_fraction.num / other_fraction.den
+        return self_as_float < other_as_float
 
     def __le__(self, other_fraction):
         return self < other_fraction or self == other_fraction
@@ -58,7 +62,7 @@ class Fraction:
         new_den = self.den * other_fraction.den
         return Fraction(new_num, new_den)
 
-    def  __mul__(self, other_fraction):
+    def __mul__(self, other_fraction):
         new_num = self.num * other_fraction.num
         new_den = self.den * other_fraction.den
         return Fraction(new_num, new_den)
