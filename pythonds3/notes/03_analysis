@@ -58,6 +58,14 @@
 
 
 
+- Anagrams
+
+    - One string is an anagram of another if the second string is just a rearrangement of the first.
+
+        heart & earth
+        python & typhon
+
+
 - Anagram Detection - Solution 1: Checking Off
 
 
