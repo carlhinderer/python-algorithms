@@ -1,0 +1,48 @@
+-----------------------------------------------------------------------------
+| CHAPTER 4 - BASIC DATA STRUCTURES                                         |
+-----------------------------------------------------------------------------
+
+- Stacks
+
+    - Stacks are LIFO data structures.  Here are the stack operations:
+
+        Stack()              # Creates a new empty stack
+
+        push(item)           # Adds a new item to the top of the stack
+
+        pop()                # Removes the top item from the stack
+
+        peek()               # Returns the top item from the stack but does not remove it
+
+        is_empty()           # Tests to see whether the stack is empty
+
+        size()               # Returns the number of items on the stack
+
+
+
+- Balanced Parentheses Checker
+
+- Converting Decimal Numbers to Binary Numbers
+
+
+- Queues
+
+    - Queues are FIFO data structures.  Here are the queue operations:
+
+        Queue()              # Creates a new empty queue
+
+        enqueue(item)        # Adds a new item to the rear of the queue
+
+        dequeue()            # Removes the front item from the queue
+
+        is_empty()           # Tests to see whether the queue is empty
+
+        size()               # Returns the number of items in the queue
+
+
+
+- Deques
+
+- Linked Lists
+
+- Ordered Lists
