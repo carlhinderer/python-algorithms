@@ -66,20 +66,56 @@
         python & typhon
 
 
+    - For this example, we'll assume the strings are always the same length and from the set of
+        lowercase letters.
+
+
+    - Code located at 'src/ch03/anagram.py'.
+
+
+
 - Anagram Detection - Solution 1: Checking Off
+
+    - We move through the first string, checking off each character by setting it to None if it
+        exists.  Since strings are immutable, we cast the string to a list to do this.
+
+    - Since we check all the characters in s2 for each character in s1, the running time is 
+        O(n**2).
+
 
 
 - Solution 2: Sort and Compare
 
+    - Just sort both strings, then compare them one character at a time.
+
+    - Since we have to sort the strings, the running time is O(n lg n).
+
+
 
 - Solution 3: Brute Force
+
+    - We could try to solve this problem with brute force by generating all the possible strings from
+        s1, and seeing if we get s2.
+
+    - This will generate n! possible strings for s1, so the running time is O(n!), which is even larger
+        than O(2**n).
+
 
 
 - Solution 4: Count and Compare
 
+    - If 2 strings are anagrams, they have the same number of a's, same number of b's, etc.
+
+    - Since there are only 26 possible characters, we'll create a dictionary with all the characters
+        and move through each string, making the counts.  Afterwards, we'll compare the dictionaries.
+
+    - The running time for this algorithm is T(n) = 2n + 26.  This is O(n).
+
+
 
 - Performance of Python Lists
 
+    - 
 
 - Big-O Efficiency of Python List Operations
 
@@ -95,7 +131,7 @@
 
         pop(i)                       O(n)
 
-        insert(i,item)               O(n)
+        insert(i, item)              O(n)
 
         del operator                 O(n)
 
