@@ -2,7 +2,8 @@ from src.ch04.stack import Stack
 
 
 def test_stack_creation():
-    s = Stack()
+    Stack()
+
 
 def test_is_empty():
     s = Stack()
@@ -10,6 +11,7 @@ def test_is_empty():
 
     s.push('abc')
     assert not s.is_empty()
+
 
 def test_push_and_pop():
     s = Stack()
@@ -21,10 +23,12 @@ def test_push_and_pop():
     assert s.pop() == 'def'
     assert s.pop() == 'abc'
 
+
 def test_peek():
     s = Stack()
     s.push('abc')
     assert s.peek() == 'abc'
+
 
 def test_size():
     s = Stack()
