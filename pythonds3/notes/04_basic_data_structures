@@ -2,9 +2,34 @@
 | CHAPTER 4 - BASIC DATA STRUCTURES                                         |
 -----------------------------------------------------------------------------
 
+- Linear Data Structures
+
+    - We'll look at 4 examples of linear data structures, whose items are ordered depending on how they
+        were added and removed:
+
+        1. Stacks
+        2. Queues
+        3. Deques
+        4. Lists
+
+
+
 - Stacks
 
-    - Stacks are LIFO data structures.  Here are the stack operations:
+    - Stacks are LIFO data structures.  Newer items are near the top, while older items are near the
+        base.  Imagine a stack of plates or cafeteria trays.
+
+
+    - When you put items on the stack, then remove them back off, they are returned in the reverse order
+        of which they were inserted.  
+
+      For instance, web browsers store browsing history as a stack to enable the back button.
+
+
+
+- The Stack ADT
+
+    - Here are the stack operations:
 
         Stack()              # Creates a new empty stack
 
@@ -17,6 +42,32 @@
         is_empty()           # Tests to see whether the stack is empty
 
         size()               # Returns the number of items on the stack
+
+
+
+- Implementing a Stack
+
+    - We'll use a list to implement a stack in Python, since both 'append' and 'pop' operations are O(1).
+
+        class Stack:
+            def __init__(self):
+                self._items = []
+
+            def is_empty(self):
+                return not bool(self._items)
+
+            def push(self, item):
+                self._items.append(item)
+
+            def pop(self):
+                return self._items.pop()
+
+            def peek(self):
+                return self._items[-1]
+
+            def size(self):
+                return len(self._items)
+
 
 
 
