@@ -6,6 +6,8 @@ import timeit
 
 print(f"{'n':10s}{'list':>10s}{'dict':>10s}")
 
+
+# Test contains in lists and dictionaries
 for i in range(10_000, 1_000_001, 20_000):
     t = timeit.Timer(f"random.randrange({i}) in x", "from __main__ import random, x")
 
