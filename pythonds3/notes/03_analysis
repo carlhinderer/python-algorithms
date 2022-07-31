@@ -115,7 +115,12 @@
 
 - Performance of Python Lists
 
-    - 
+    - Two common operations, indexing and assigning to an index position, are implemented in O(1).
+
+    - To grow the list, appending is also O(1).  
+
+
+
 
 - Big-O Efficiency of Python List Operations
 
