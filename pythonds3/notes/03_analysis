@@ -117,7 +117,34 @@
 
     - Two common operations, indexing and assigning to an index position, are implemented in O(1).
 
-    - To grow the list, appending is also O(1).  
+    - To grow the list, we can use either the 'append' method or a concatenation operator.  Appending
+        is O(1), while concatenation is O(k) for a list sized k.
+
+
+
+- Generating Lists
+
+    - Here, we look at 4 different ways to create and populate a new list of n numbers.
+
+        def test1():
+            l = []
+            for i in range(1000):
+                l = l + [i]
+
+        def test2():
+            l = []
+            for i in range(1000):
+                l.append(i)
+
+        def test3():
+            l = [i for i in range(1000)]
+
+        def test4():
+            l = list(range(1000))
+
+
+    - We'll use Python's 'timeit' module to see how long it takes to run each of our list creation
+        methods 1000 times.  The code is located at 'performance/ch03/list_performance.py'.
 
 
 
@@ -132,7 +159,7 @@
 
         append                       O(1)
 
-        pop()                        O(1)
+        pop()                        O(1)      # Returns last element
 
         pop(i)                       O(n)
 
@@ -160,7 +187,29 @@
 
 
 
+- Python List Pop Operation
+
+    - To illustrate the differences between removing the last element from a list, vs removing an 
+        element from the middle, we'll time the difference.
+
+        pop_zero = Timer("x.pop(0)", "from __main__ import x")
+        pop_end = Timer("x.pop()", "from __main__ import x")
+
+
+    - The performance test is included in 'code/performance/list_performance.py'.  We can see that
+        popping the last element is O(1), while popping at another location is O(n).
+
+
+
 - Performance of Python Dictionaries
+
+    - Python dictionaries have constant-time retrievals and insertions.
+
+
+    - The 'contains' operator is O(1) in Python dictionaries, while it is O(n) in Python lists.  We
+        have an illustration of this in 'code/performance/ch03/dictionary_performance.py'.
+
+
 
 
 
