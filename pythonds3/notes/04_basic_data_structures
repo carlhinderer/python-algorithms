@@ -74,7 +74,7 @@
 
     - We can use a stack to efficiently check whether parentheses are balanced in a statement.
 
-        def parentheses_checker(symbol_string):
+        def check_parentheses(symbol_string):
             s = Stack()
 
             for symbol in symbol_string:
@@ -87,6 +87,17 @@
                         s.pop()
 
             return s.is_empty()
+
+
+
+- More General Balanced Symbol Checking
+
+    - We can expand our implementation to handle different kinds of symbols:
+
+        def matches(sym_left, sym_right):
+            all_lefts = "([{"
+            all_rights = ")]}"
+            return all_lefts.index(sym_left) == all_rights.index(sym_right)
 
 
 
