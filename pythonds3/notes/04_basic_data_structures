@@ -216,6 +216,16 @@
 
 - Queues
 
+    - A queue is an ordered collection of items where the addition of items happens at one end (the back)
+        and removal happens from the front end (the front).  It is a FIFO data structure.
+
+
+    - Common uses include printing queues, OS scheduling algorithms, and typeahead searches.
+
+
+
+- The Queue ADT
+
     - Queues are FIFO data structures.  Here are the queue operations:
 
         Queue()              # Creates a new empty queue
@@ -227,6 +237,30 @@
         is_empty()           # Tests to see whether the queue is empty
 
         size()               # Returns the number of items in the queue
+
+
+
+- Implementing a Queue in Python
+
+    - We can use a Python list, and use position 0 in the list as the front of the queue.  This will
+        give us O(n) enqueues and O(1) dequeues.
+
+
+        class Queue:
+            def __init__(self):
+                self._items = []
+
+            def is_empty(self):
+                return not bool(self._items)
+
+            def enqueue(self, item):
+                self._items.insert(0, item)
+
+            def dequeue(self):
+                return self._items.pop()
+
+            def size(self):
+                return len(self._items)
 
 
 
