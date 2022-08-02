@@ -264,6 +264,15 @@
 
 
 
+- Print Queue Simulation
+
+    - We'll simulate a printing queue by adding tasks and seeing how long it takes the print queue to
+        keep up.  This is located at 'cho4/print_queue_simulation.py'.
+
+
+    - 
+
+
 - Deques
 
 - Linked Lists
