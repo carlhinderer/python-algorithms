@@ -101,12 +101,117 @@
 
 
 
-
-
-
-
-
 - Converting Decimal Numbers to Binary Numbers
+
+    - We can get the binary representation of any integer by continually dividing the number by 2 and
+        keeping track of the remainder.  Each remainder is put onto the stack.
+
+      Then, we can pop each number back off the stack, and we'll have our full binary representation.
+
+
+    - Here is the implementation:
+
+        def divide_by_2(decimal_num):
+            rem_stack = Stack()
+
+            while decimal_num > 0:
+                rem = decimal_num % 2
+                rem_stack.push(rem)
+                decimal_num = decimal_num // 2
+
+            bin_string = ""
+            while not rem_stack.is_empty():
+                bin_string = bin_string + str(rem_stack.pop())
+
+            return bin_string
+
+
+
+- Expanding To Convert Any Base
+
+    - Here, we expand the implementation so that we can convert a decimal number to any base from 2-16.
+
+        def base_converter(decimal_num, base):
+            digits = "0123456789ABCDEF"
+            rem_stack = Stack()
+
+            while decimal_num > 0:
+                rem = decimal_num % base
+                rem_stack.push(rem)
+                decimal_num = decimal_num // base
+
+            new_string = ""
+            while not rem_stack.is_empty():
+                new_string = new_string + digits[rem_stack.pop()]
+
+            return new_string
+
+
+
+- Infix, Prefix, and Postfix Expressions
+
+    - If you write an arithmetic expression such as 'B * C', we have the operator * in between B and C.
+        This is called an 'infix expression', since the operator is 'in between' the operands.
+
+
+    - Note that once we have expressions like 'A + B * C', there may be ambiguity about precedence.
+        One way to solve this would be to use a fully parenthesized expression, like '(A + (B * C))'.
+
+
+    - 'Prefix expressions' require that all operators precede the two operands, like '+ A * B C'.
+
+
+    - 'Postfix expressions' require the operator to come after the operands, like 'A B C * +'.
+
+
+
+- Converting Infix Expressions to Prefix and Postfix
+
+    - One technique for converting an infix to prefix or postfix is to convert the infix notation to 
+        a fully parenthesized expression based on operator precedence.
+
+      Then, we can easily convert it to prefix or postix.
+
+
+    - To convert an infix expression to postfix, we create a stack.  We iterate through the statement,
+        split on the tokens, and:
+
+        1. If the token is an operand, add it to the end of the output list.
+
+        2. If the token is a left parentheses, push it onto the stack.
+
+        3. If the token is a right parentheses, pop from the stack until the left parentheses is
+             removed.  Add each operator that gets popped off to the end of the output list.
+
+        4. If the token is an operator, push it onto the stack.  However, first remove any operators
+             already on the top of the stack with equal or higher precedence and append them to the
+             output list.
+
+      Then, at the end, if there are any operators left on the stack, append them to the output list.
+
+
+    - This algorithm is implemented in 'ch04/statement_conversion.py'.
+
+
+
+- Postfix Evaluation
+
+    - To evaluate a statement in postfix notation:
+
+        Create a stack and split the expression into tokens.  Then, for each token:
+
+          1. If the token is an operand, push it onto the stack.
+
+          2. If the token is an operator, it will need 2 operands, so pop from the stack twice.  The
+               first pop is the second operand, and the second pop is the first operand.
+
+             Perform the operation and push the result to the stack.
+
+        When the expression is completely processed the result will be the remaining value on the stack.
+
+
+    - This algorithm is implemented in 'ch04/statement_conversion.py'.
+
 
 
 - Queues
@@ -130,3 +235,4 @@
 - Linked Lists
 
 - Ordered Lists
+
