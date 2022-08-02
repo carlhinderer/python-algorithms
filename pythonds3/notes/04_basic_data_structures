@@ -328,6 +328,25 @@
 
 
 
+- Palindrome Checking
+
+    - We can use a Deque to check whether a string is a palindrome, since we can remove elements from
+        both sides at the same time.
+
+        def pal_checker(a_string):
+            char_deque = Deque()
+
+            for ch in a_string:
+                char_deque.add_rear(ch)
+
+            while char_deque.size() > 1:
+                first = char_deque.remove_front()
+                last = char_deque.remove_rear()
+                if first != last:
+                    return False
+
+
+
 - Linked Lists
 
 
