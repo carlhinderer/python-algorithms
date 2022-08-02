@@ -226,7 +226,7 @@
 
 - The Queue ADT
 
-    - Queues are FIFO data structures.  Here are the queue operations:
+    - Here are the queue operations:
 
         Queue()              # Creates a new empty queue
 
@@ -242,7 +242,7 @@
 
 - Implementing a Queue in Python
 
-    - We can use a Python list, and use position 0 in the list as the front of the queue.  This will
+    - We can use a Python list, and use position 0 in the list as the back of the queue.  This will
         give us O(n) enqueues and O(1) dequeues.
 
 
@@ -270,12 +270,67 @@
         keep up.  This is located at 'cho4/print_queue_simulation.py'.
 
 
-    - 
-
 
 - Deques
 
+    - A 'deque' (aka a double-ended queue) is an ordered collection, in which you can add and remove items
+        from either the front or rear.  It does not require strict FIFO or LIFO.
+
+
+
+- The Deque ADT
+
+    - Here are the deque operations:
+
+        Deque()             # Creates a new deque
+
+        add_front(item)     # Adds a new item to the front of the deque
+
+        add_rear(item)      # Adds a new item to the rear of the deque
+
+        remove_front()      # Removes the front item from the deque
+
+        remove_rear()       # Removes the rear item from the deque
+
+        is_empty()          # Tests to see whether the deque is empty
+
+        size()              # Returns the number of items in the deque
+
+
+
+- Implementing a Deque
+
+    - As with our Queue, we'll implement the Deque using a list and use position 0 as the back of the
+        deque.  This means operations on the front of the deque are O(1), while operations on the
+        back of the deque are O(n).
+
+        class Deque:
+            def __init__(self):
+                self._items = []
+
+            def is_empty(self):
+                return not bool(self._items)
+
+            def add_front(self, item):
+                self._items.append(item)
+
+            def add_rear(self, item):
+                self._items.insert(0, item)
+
+            def remove_front(self):
+                return self._items.pop()
+
+            def remove_rear(self):
+                return self._items.pop(0)
+
+            def size(self):
+                return len(self._items)
+
+
+
 - Linked Lists
+
+
 
 - Ordered Lists
 
