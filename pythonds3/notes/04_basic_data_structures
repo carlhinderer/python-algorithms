@@ -347,7 +347,55 @@
 
 
 
+- Lists
+
+    - An 'unordered list' (in general, not the Python list) is a collection of items that hold relative
+        position to each other.
+
+
+    - For our purposes, we will assume that lists cannot contain duplicate items.
+
+
+
+- The Unordered List ADT
+
+    - Here are the unordered list operations:
+
+        List()               # Creates a new list
+
+        add(item)            # Adds a new item to the list
+
+        remove(item)         # Removes the item from the list, or raises error if item is not present
+
+        search(item)         # Searches for the item in the list and returns a boolean value
+
+        is_empty()           # Tests to see whether the list is empty
+
+        size()               # Returns the number of items in the list
+
+        append(item)         # Adds a new item to the end of the list
+
+        index(item)          # Returns the position of item in the list, assumes item is in list
+
+        insert(pos, item)    # Adds a new item to the list at position pos, assumes item not in list
+
+        pop()                # Removes and returns the last item in the list, assumes list is nonempty
+
+        pop(pos)             # Removes and returns the item at position pos, assumes item is in list
+
+
+
 - Linked Lists
+
+    - We'll use a linked list to implement our unordered list.  The code is located at 
+        'ch04/unordered_list.py'.
+
+        class Node: ...
+        class UnorderedList: ...
+
+
+    - With linked lists, we maintain the order of the items in the list, but but there is no
+        requirement for them to be stored in contiguous memory.
 
 
 
