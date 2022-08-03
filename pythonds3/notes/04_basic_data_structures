@@ -387,10 +387,13 @@
 
 - Linked Lists
 
-    - We'll use a linked list to implement our unordered list.  The code is located at 
-        'ch04/unordered_list.py'.
+    - We'll use a linked list to implement our unordered list.  The code for the list node is located
+        at 'ch04/node.py'.
 
         class Node: ...
+
+      The code for the list node is located at 'ch04/unordered_list.py'.
+
         class UnorderedList: ...
 
 
@@ -399,5 +402,8 @@
 
 
 
-- Ordered Lists
+- The Ordered List ADT
 
+    - Here are the ordered list operations:
+
+        
