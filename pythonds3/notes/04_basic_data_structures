@@ -404,6 +404,35 @@
 
 - The Ordered List ADT
 
+    - With ordered lists, we maintain the order of the itmes in the list at all times.
+
+
     - Here are the ordered list operations:
 
-        
+        OrderedList()        # Creates a new ordered list
+
+        add(item)            # Adds a new item to the list making sure that the order is preserved
+
+        remove(item)         # Removes the item from the list
+
+        search(item)         # Searches for the item in the list
+
+        is_empty()           # Tests to see whether the list is empty
+
+        size()               # Returns the number of items in the list
+
+        index(item)          # Returns the position of item in the list
+
+        pop()                # removes and returns the last item in the list
+
+        pop(pos)             # Removes and returns the item at position pos
+
+
+
+- Implementing an Ordered List
+
+    - The 'is_empty', 'size', and 'remove' methods will work just as before.  We will need to update the
+        'search' and 'add' methods.
+
+
+    - The implementation is located at 'ch04/ordered_list.py'.

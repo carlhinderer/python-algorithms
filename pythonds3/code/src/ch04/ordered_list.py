@@ -1,7 +1,7 @@
 from src.ch04.node import Node
 
 
-class UnorderedList:
+class OrderedList:
     def __init__(self):
         self.head = None
 
@@ -20,18 +20,31 @@ class UnorderedList:
 
     def search(self, item):
         current = self.head
-
         while current is not None:
             if current.data == item:
                 return True
+            if current.data > item:
+                return False
             current = current.next
 
         return False
 
     def add(self, item):
+        """Add a new node"""
+        current = self.head
+        previous = None
         temp = Node(item)
-        temp.set_next(self.head)
-        self.head = temp
+
+        while current is not None and current.data < item:
+            previous = current
+            current = current.next
+
+        if previous is None:
+            temp.next = self.head
+            self.head = temp
+        else:
+            temp.next = current
+            previous.next = temp
 
     def remove(self, item):
         current = self.head
