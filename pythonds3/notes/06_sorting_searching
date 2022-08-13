@@ -38,8 +38,41 @@
 
 - Binary Search
 
-    - 
+    - If the list is ordered, we can use binary search to search by repeatedly splitting the list in half.
+        This is O(log n).
 
+        def binary_search(a_list, item):
+            first = 0
+            last = len(a_list) - 1
+
+            while first <= last:
+                midpoint = (first + last) // 2
+
+                if a_list[midpoint] == item:
+                    return True
+                elif item < a_list[midpoint]:
+                    last = midpoint - 1
+                else:
+                    first = midpoint + 1
+
+            return False
+
+
+    - The binary search is a divide-and-conquer algorithm, which breaks the problem into smaller pieces,
+        then reassembles them to get the result.  We can also use a recursive implementation:
+
+        def binary_search_rec(a_list, item):
+            if len(a_list) == 0:
+                return False
+            else:
+                midpoint = len(a_list) // 2
+
+                if a_list[midpoint] == item:
+                    return True
+                elif item < a_list[midpoint]:
+                    return binary_search_rec( a_list[:midpoint], item)
+                else:
+                    return binary_search_rec(a_list[midpoint + 1 :], item)
 
 
 
