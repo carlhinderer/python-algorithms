@@ -2,14 +2,171 @@
 | CHAPTER 5 - RECURSION                                                     |
 -----------------------------------------------------------------------------
 
-- Sum a List of Numbers
+- Recursion
+
+    - Recursion is a method of solving problems by breaking a problem down into smaller subproblems,
+        until you get a small enough subproblem to solve trivially.
+
+
+
+- Sum a List of Numbers Iteratively
+
+    def list_sum(num_list):
+        the_sum = 0
+        for i in num_list:
+            the_sum = the_sum + i
+        return the_sum
+
+
+
+- Sum a List of Numbers Recursively
+
+     def list_sum(num_list):
+         if len(num_list) == 1:
+             return num_list[0]
+         else:
+             return num_list[0] + list_sum(num_list[1:])
+
+
 
 - Three Laws of Recursion
 
+    1. Must have a base case.
+
+    2. Must change it's state and move towards the base case.
+
+    3. Must call itself recursively.
+
+
+
 - Converting an Integer to a String in Any Base
+
+    def to_str(n, base):
+        convert_string = "0123456789ABCDEF"
+   
+        if n < base:
+            return convert_string[n]
+        else:
+            return to_str(n // base, base) + convert_string[n % base]
+
+
+
+- Tracing Execution of Integer Conversion
+
+    - Here, we convert 10 to it's base-2 string representation ('1010').
+
+        to_str(10, 2)   ->    10 // 2    + '0'
+
+        to_str(5, 2)    ->     5 // 2    + '1'
+
+        to_str(2, 2)    ->     2 // 2    + '0'
+
+        to_str(1, 2)    ->     1 < 2     + '1'
+
+
+    - Note that we don't have to reverse the string when we're done.  This is because we delay the 
+        concatenation operator until after the recursive call has returned.
+
+
+
+- Recursive Palindrome Checker
+
+    def check_pal(my_str):
+        if len(my_str) == 1:
+            return True
+        elif len(my_str) == 2:
+            return my_str[0] == my_str[1]
+        else:
+            return my_str[0] == my_str[-1] and check_pal(my_str[1:-1])
+
+
+
+- Implementing Recursion with Stack Frames
+
+    - When a function is called in Python, a stack frame is allocated to handle the local variables of
+        the function.
+
+
+    - When the function returns, the return value is left on top of the stack for the calling function
+        to access.
+
+
+
+- Drawing a Fractal Tree
+
+    - For illustrations, we'll use Python's standard 'turtle' graphics module.  You create a turtle,
+        the the turtle can move [up, down, left, right] and can have it's tail up or down.
+
+
+    - To draw a fractal tree:
+
+        def tree(branch_len, t):
+            if branch_len > 5:
+                t.forward(branch_len)
+                t.right(20)
+                tree(branch_len - 15, t)
+                t.left(40)
+                tree(branch_len - 15, t)
+                t.right(20)
+                t.backward(branch_len)
+
+
 
 - Sierpinski Triangle
 
+    - To draw a Sierpinski triangle (full code at ch05/sierpinski.py):
+
+        def sierpinski(points, degree, my_turtle):
+            colormap = ["blue", "red", "green", "white", "yellow", "violet", "orange"]
+            draw_triangle(points, colormap[degree], my_turtle)
+            if degree > 0:
+                sierpinski(
+                    [points[0], get_mid(points[0], points[1]), get_mid(points[0], points[2])],
+                    degree - 1,
+                    my_turtle,
+                )
+                sierpinski(
+                    [points[1], get_mid(points[0], points[1]), get_mid(points[1], points[2])],
+                    degree - 1,
+                    my_turtle,
+                )
+                sierpinski(
+                    [points[2], get_mid(points[2], points[1]), get_mid(points[0], points[2])],
+                    degree - 1,
+                    my_turtle,
+                )
+
+
+
 - Tower of Hanoi
 
+    - To implement the Tower of Hanoi solution:
+
+        def move_tower(height, from_pole, to_pole, with_pole):
+            if height >= 1:
+                move_tower(height - 1, from_pole, with_pole, to_pole)
+                move_disk(from_pole, to_pole)
+                move_tower(height - 1, with_pole, to_pole, from_pole)
+
+
+        def move_disk(from_p, to_p):
+            print("moving disk from", from_p, "to", to_p)
+
+
+        move_tower(3, "A", "B", "C")
+
+
+    - Note that stacks are used to keep track of which disks are on which poles.  We don't have to use
+        them explicity, since Python is implicitly providing the stacks we need through the call stack.
+
+
+
+- Exploring a Maze
+
+    - 
+
+
+
 - Dynamic Programming
+
+    - 
