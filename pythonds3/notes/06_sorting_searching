@@ -2,9 +2,47 @@
 | CHAPTER 6 - SORTING & SEARCHING                                           |
 -----------------------------------------------------------------------------
 
+- Searching a List
+
+    - We can just use the 'in' operator to find out if an item is present in a list.
+
+        3 in [3, 5, 2, 4, 1]
+
+
+
 - Sequential Search
 
+    - A sequential search just checks each element in the list, so it is O(n).
+
+        def unordered_sequential_search(a_list, item):
+            for i in range(len(a_list)):
+                if a_list[i] == item:
+                    return True
+
+            return False
+
+
+    - If the list is ordered, we can stop if we get past the item's value in the list, but it is still
+        O(n).
+
+        def ordered_sequential_search(a_list, item):
+            for i in range(len(a_list)):
+                if a_list[i] == item:
+                    return True
+                elif a_list[i] > item:
+                    return False
+
+            return False
+
+
+
 - Binary Search
+
+    - 
+
+
+
+
 
 - Hashing
 
