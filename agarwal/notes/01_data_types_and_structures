@@ -1,0 +1,229 @@
+----------------------------------------------------------------------
+| CHAPTER 1 - PYTHON DATA TYPES & STRUCTURES                         |
+----------------------------------------------------------------------
+
+- Python Data Types and Structures
+
+    - An 'algorithm' is a set of step-by-step instructions to solve any given problem.  The data used by
+        the algorithm has to be stored and organized efficiently in computer memory.
+
+    - 'Data structures' deal with how data is stored and organized in the memory of the computer that is
+        going to be used in a program.
+
+    - Python is dynamically typed.  The Python interpreter binds the value of a variable with it's type
+        at runtime.  We can check a variable's type with the 'type()' function.
+
+    - Every variable is an object of a specific type.
+
+
+
+- Basic Data Types
+
+    - Numeric
+
+        Integer     # -25, 1000
+        Float       # 100.98
+        Complex     # 3.0 + 1.3i
+
+
+    - Boolean
+
+        True or False
+
+
+    - Sequences
+
+        Strings     # 'single-line', "single-line"
+                    # """ multiline
+                    # string """
+
+        Range       # range(1, 10, 2)
+
+        List        # ['food', 'bus', 'apple']
+
+
+
+- Membership, Identity, and Logical Operators
+
+    - Membership
+
+        if member in my_list:
+            ...
+
+        if member not in my_list:
+            ...
+
+
+    - Identity
+
+        Identity   # if a is b
+                   # if a is not b
+
+        Equality   # a == b
+
+
+    - Logical Operators
+
+        if a and b:
+            ...
+
+        if a or b:
+            ...
+
+        if not a:
+            ...
+
+
+
+- Tuples
+
+    tuple_name = ('entry1', 'entry2', 'entry3')
+
+    tuple_name[1]
+    tuple_name[-2]
+    tuple_name[1:]
+
+
+
+- Dictionaries
+
+    my_dict = {'key1': 'value1', 'key2': 'value2'}
+
+    if 'key1' in my_dict:
+        ...
+
+    len(my_dict)
+    my_dict.clear()
+    my_dict.get(key)
+    my_dict.items()
+    my_dict.keys()
+    my_dict.values()
+
+    my_dict.pop(key)
+    my_dict.popitem()
+    my_dict.update(other_dict)
+
+
+
+- Sets
+
+    x = {'and', 'python', 'data', 'structure'}
+
+    len(x)
+    'and' in x
+    'and' not in x
+
+    x | y        # Union
+    x & y        # Intersection
+    x - y        # Difference
+    x ^ y        # Exclusive Or
+    x <= y       # Subset
+    
+    # Immutable sets
+    x = frozenset(['data', 'structure', 'and', 'python'])
+
+
+
+- Python's 'collections' Module
+
+    - The 'collections' module provides different types of containers, which store different objects and
+        provide ways to access them.
+
+        namedtuple      # Tuple with named fields
+        deque           # Doubly-linked lists that provide efficient adding and removing from both ends
+        defaultdict     # Dictionary with default values for missing keys
+        ChainMap        # Dictionary that merges multiple dictionaries
+        Counter         # Dictionary that returns counts of keys
+
+        UserDict        # Base types that we can subclass and add more functionality
+        UserList
+        UserString
+
+
+    - Named Tuples
+
+        from collections import namedtuple
+
+        Book = namedtuple('Book', ['name', 'ISBN', 'quantity'])
+
+        book1 = Book('Hands on Data Structures', '9781788995573', '50')
+
+
+    - Deque
+
+        - A 'deque' (doubly-ended queue) supports append and pop from both sides of the list in O(1) time.
+        
+        from collections import deque
+
+        s = deque([1, 2, 'name'])
+
+        s.append('age')
+        s.appendleft('age')
+
+        s.pop()
+        s.popleft()
+
+
+    - Ordered Dictionaries
+
+        - An ordered dictionary preserves the order of the keys that are inserted.
+
+        from collections import OrderedDict
+
+        od = OrderedDict({'my': 2, 'name ': 4, 'is': 2, 'Mohan' :5})
+
+
+    - Default Dictionary
+
+        from collections import defaultdict
+
+        dd = defaultdict(int)
+        words = str.split('data python data data structure data python')
+
+        for word in words:
+            dd[word] += 1
+
+
+    - ChainMap object
+
+        from collections import ChainMap
+
+        d1 = {'data': 1, 'structure': 2}
+        d2 = {'python': 3, 'language': 4}
+
+        chain = ChainMap(d1, d2)
+
+
+    - Counter objects
+
+        from collections import Counter
+
+        inventory = Counter('hello')
+        print(inventory)                # Counter({'l': 2, 'h': 1, 'e': 1, 'o': 1})
+
+
+    - UserDict
+
+        from collections import UserDict
+
+        class MyDict(UserDict):
+            def push(self, key, value):
+                raise RuntimeError('Cannot insert')
+
+
+    - UserList
+
+        from collections import UserList
+
+        class MyList(UserList):
+            def push(self, key):
+                raise RuntimeError('Cannot insert in list')
+
+
+    - UserString
+
+        from collections import UserString
+
+        class MyString(UserString):
+            def append(self, value):
+                self.data += value
