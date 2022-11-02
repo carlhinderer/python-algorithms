@@ -70,23 +70,176 @@
                 if a_list[midpoint] == item:
                     return True
                 elif item < a_list[midpoint]:
-                    return binary_search_rec( a_list[:midpoint], item)
+                    return binary_search_rec(a_list[:midpoint], item)
                 else:
                     return binary_search_rec(a_list[midpoint + 1 :], item)
 
 
 
-
 - Hashing
+
+    - We will use 'hashing' to build a data structure that can be searched in O(1) time.  A 'hash table'
+        is a collection of items with 'slots' used to hold items.
+
+        [ Slot0 | Slot1 | Slot2 | Slot3 | Slot4 | Slot5 | Slot6 | Slot7 | Slot8 | Slot9 ]
+
+
+    - The mapping between an item and the slot where the item belongs is called a 'hash function'.
+        Modulo arithmetic will typically be present in all hash functions.
+
+
+    - The 'load factor' in the hash table is (# of items / # of slots).
+
+
+    - If 2 or more items need to occupy the same slot, we call this a 'collision' (aka a 'clash').
+
+
+
+- Hash Functions
+
+    - A hash function that maps each item into a unique slot is called a 'perfect hash function'.  We
+        could construct one if we knew the collection of items would never change.  For an arbitrary
+        collection of items, it is not possible.
+
+
+    - Our goal when creating a hash function:
+
+        - Minimizes the number of collisions
+        - Easy to compute
+        - Evenly distributes the items in the table
+
+
+
+- The Folding Method
+
+    - The 'folding method' for constructing hash functions divides the item into equal size pieces, then 
+        adds the pieces together to give the resulting hash value.
+
+      
+    - For example, assuming we have 11 slots:
+
+        - We take a phone number '436-555-4601', break it up into 2-digit groups, and add them together.
+
+            43 + 56 + 55 + 64 + 01 = 210
+
+        - Then, 
+
+            210 % 11 = 10    # Slot 10
+
+
+
+- The Mid-Square Method
+
+    - With the 'mid-square' method for constructing hash functions, we square the item and extract some
+        portion of the resulting value.
+
+
+    - For example:
+
+        - We take the value '44' and square it.
+
+            44 ** 2 = 1936
+
+        - We extract the middle 2 digits to get '93'.
+
+        - Then,
+
+            93 % 11 = 5      # Slot 5
+
+
+
+- Hashing Strings
+
+    - To create hash functions for characters, we can think of strings as a sequence of ordinal values.
+
+        ord('c')     # 99
+        ord('a')     # 97
+        ord('t')     # 116
+
+
+    - Then, we can add the values to get a hash value.
+
+        99 + 97 + 116 = 312 
+
+        213 % 11 = 4     # Slot 4
+
+
+    - Here is the function to compute the bucket of a string:
+
+        def hash_str(a_string, table_size):
+            return sum([ord(c) for c in a_string]) % table_size
+
+
+    - If we use this method, anagrams will get the same hash value.  To remedy this, we could use the
+        position of the character as a weight.
+
+
+
+- Collision Resolution
+
+    - When 2 items hash to the same slot, we must have a systematic method for placing the second item in
+        the hash table.  This is called 'collision resolution'.
+
+
+    - One method for resolving collisions looks into the hash table and tries to find another open slot
+        to hold the item that caused the collision.  This is referred to as 'open addressing' since it
+        tries to find the next open slot.  By systematically visiting each slot one at a time, we are
+        using the 'linear probing' technique.
+
+
+    - Using this method, we must ensure we use the same method when searching for an item.  We check the
+        slot, and need to keep checking slots until we find the item or hit an empty slot.  One 
+        disadvantage of this approach is 'clustering', meaning that items become clustered in the table.
+
+
+    - We can alleviate clustering by skipping slots (ie jump ahead 3 slots).  This is known as 'rehashing'.
+        We can also vary the skip interval, in a process known as 'quadratic probing'.
+
+
+    - An alternative method for handling collisions is called 'chaining'.  In this case, we just put a
+        linked list at each bucket, and we can add as many items as we want in each bucket.  We can use
+        a searching technique to determine whether the item is present.
+
+
+
+- The Map ADT
+
+    - The Map ADT has the following operations:
+
+        Map()              # Creates a new, empty map
+        put(key, val)      # Adds a new key/value pair to the map
+        get(key)           # Given a key, returns the value stored in the Map or None
+        del                # Deletes the key/value pair from the Map using 'del map[key]'
+        len()              # Returns the number of key/value pairs stored in the map
+        in                 # Returns True if key is in the map, False otherwise
+
+
+
+- Implementing the Map ADT
+
+    - We implement the Map in 'src/ch06/map.py'.
+
+
+
+- Analysis of Hashing
+
+    - The goal of an efficient implementation for a hash function is to get O(1) lookups.
+
+
 
 - Bubble Sort
 
+
 - Selection Sort
+
 
 - Insertion Sort
 
+
 - Shell Sort
 
+
 - Merge Sort
+
 
 - Quick Sort
