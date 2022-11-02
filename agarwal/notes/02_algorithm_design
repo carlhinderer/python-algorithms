@@ -1,0 +1,194 @@
+----------------------------------------------------------------------
+| CHAPTER 2 - INTRO TO ALGORITHM DESIGN                              |
+----------------------------------------------------------------------
+
+- Performance Analysis of an Algorithm
+
+    - The 'time complexity' is the amount of time the algorithm will take to execute on a computer, in
+        relation to the size of it's input.
+
+
+    - For example, linear search has O(n) time complexity.
+
+        def linear_search(input_list, element):
+            for index, value in enumerate(input_list):
+                if value == element:
+                    return index
+
+
+    - The 'space complexity' is the amount of memory an algorithm will require to execute, as a function of
+        it's input.
+
+
+    - For example, this algorithm to get a list of squares requires O(n) memory:
+
+        def squares(n):
+            square_numbers = []
+            for number in n:
+                square_numbers.append(number * number)
+            return square_numbers
+
+
+
+- Asymptotic Notation
+
+    - We commonly use these notations to calculate the running time complexity of an algorithm:
+
+        Theta(n)         # Worst-case running time with a tight bound
+        O(n)             # Worst-case running time with an upper bound
+        Omega(n)         # Best-case running time, lower bound
+
+
+    - Theta notation provides a tight upper and lower asymptotic bound, whereas Big O notation only gives
+        an upper bound.  
+
+        T(n) = O(f(n))
+
+
+    - The most common growth rates:
+
+        Time Complexity      Name
+        -----------------------------------------
+        O(1)                 Constant
+        O(log n)             Logarithmic
+        O(n)                 Linear
+        O(n log n)           Linear-logarithmic
+        O(n**2)              Quadratic
+        O(n**3)              Cubic
+        O(2**n)              Exponential
+
+
+    - Omega notation describes an asymptotic lower bound on algorithms, similarly to how Big O notation
+        describes an upper bound.
+
+
+
+- Amortized Analysis
+
+    - In the amortized analysis of an algorithm, we average the time required to execute a sequence of 
+        operations with all the operations of the algorithm. This is called 'amortized analysis'. 
+
+
+    - Amortized analysis is important when we are not interested in the time complexity of individual
+        operations but we are interested in the average runtime of sequences of operations.
+
+
+    - There are 3 commonly used methods for amortized analysis:
+
+        1. Aggregate Analysis
+
+             The amortized cost is the average cost of all the sequences of operations.  To compute the
+               amortized cost, we divide the upper bound on the total cost of n operations by n.
+
+        2. The Accounting Method
+
+             We assign an amortized cost to each operation, which may be different from their actual cost.
+               In this, we impose an extra charge on early operations in the sequence and save 'credit cost',
+               which is used to pay for expensive operations later in the sequence.
+
+        3. The Potential Method
+
+             This is like the accounting method, but we accumulate the overcharged credit as 'potential
+               energy' of the data structure as a whole instead of storing credit for individual 
+               operations.
+
+
+
+- Composing Complexity Classes
+
+    - We can combine the complexity classes of simple operations to find the complexity class of more 
+        complex, combined operations.
+
+
+    - The simplest way to combine complexity classes is to combine them.  If inserting an item takes O(n)
+        time, and sorting in O(n lg n) time, we can write the total time complexity as 
+        O(n + n lg n) = O(n lg n).
+
+
+    - If we repeat an operation, for instance, in a while loop, we can multiply the complexity class by
+        the number of times the operation is carried out.  If an operation with complexity O(n) is repeated
+        O(n) times, we get O(n * O(n)) = O(n**2).
+
+
+
+- Computing the Running Time Complexity of an Algorithm
+
+    - Example
+
+        for i in range(n):
+            print('data')      # Constant time
+
+        # O(n)
+
+
+    - Example
+
+        for i in range(n):
+            for j in range(n):
+                print('run')      # Constant time
+
+        # O(n**2)
+
+
+    - Example
+
+        for i in range(n):
+            for j in range(n):
+                print('run')
+                break
+
+        # O(n), since the inner loop only runs once before break
+
+
+    - Example
+
+        def fun(n):
+            for i in range(n):
+                print('data')
+
+            for i in range(n):
+                for j in range(n):
+                    print('data')
+
+        # O(n**2)
+
+
+    - Example
+
+        if n == 0:
+            print('data')
+        else:
+            for i in range(n):
+                print('structure')
+
+        # O(n)
+
+
+    - Example
+
+        i = 1
+        j = 0
+
+        while i*i < n:
+            j = j+1
+            i = i+1
+            print('data')
+
+        # O(sqrt(n)), since the loop iterates based on the condition i**2 <= n
+
+
+    - Example
+
+        for i in range(int(n/2), n):
+            j = 1
+            while j + n/2 <= n:
+                k = 1
+                while k < n:
+                    k *= 2
+                    print('data')
+                    j += 1
+
+        # The outer loop with execute n/2 times
+        # The middle loop will run n/2 times
+        # The inner loop will run log(n) times
+        # O(n**2 lg n)
