@@ -1,0 +1,488 @@
+----------------------------------------------------------------------
+| CHAPTER 3 - ALGORITHM DESIGN TECHNIQUES & STRATEGIES               |
+----------------------------------------------------------------------
+
+- Algorithm Design Techniques
+
+    - A straightforward 'brute-force' approach is simple yet effective for many problems.  In this case, 
+        we just try all possible combinations of solutions in order to solve any problem.  This works
+        well for small input sizes, but is very inefficient as the input size becomes large.
+
+
+    - To come up with an optimal solution to a computing problem, we use 2 fundamental steps:
+
+        1. Formulate the problem clearly
+        2. Identify the appropriate algorithm design technique based on the structure of the problem
+
+
+    - There are several algorithm paradigms we will look at:
+
+        - Recursion
+        - Divide and conquer
+        - Dynamic programming
+        - Greedy algorithms
+
+
+
+- Recursion
+
+    - A recursive algorithm calls itself repeatedly in order to solve the problem until a certain condition
+        is fulfilled.  Each recursive call spins off other recursive calls.
+
+
+    - A recursive function has 2 cases:
+
+        - Base case = tells recursion when to terminate
+        - Recursive case = calls itself recursively to progress towards achieving the base case
+
+
+    - Here is a recursive factorial implementation:
+
+        def factorial(n):
+            if n == 0:
+                return 1
+            else:
+                return n * factorial(n-1)
+
+
+
+- Divide and Conquer
+
+    - The divide-and-conquery paradigm divides a problem into smaller sub-problems, then solves them.  
+        Finally, it combines the results to obtain a global, optimal solution.
+
+
+    - Common examples of divide-and-conquer techniques include:
+
+        - Binary search
+        - Merge sort
+        - Quick sort
+        - Fast matrix multiplication
+        - Strassen's matrix multiplication
+        - Closest pair of points
+
+
+
+- Binary Search
+
+    - This algorithm is used to find a given element from a sorted list of elements.
+
+        - First, compare the search element with the middle element in the list
+        - If the search element is smaller, recursively search the first half of the list
+        - If the search element is larger, recursively search the second half of the list
+
+
+    - Here is an implementation:
+
+        def binary_search(arr, start, end, key):
+            while start <= end:
+                mid = start + (end - start) / 2
+                if arr[mid] == key:
+                    return mid
+                elif arr[mid] < key:
+                    start = mid + 1
+                else:
+                    end = mid - 1
+            return -1
+
+
+    - Since, we halve the search space with each iteration, the complexity for this algorithm is O(lg n).
+
+
+
+- Merge Sort
+
+    - Merge sort is an algorithm for sorting a list of n natural numbers in increasing order.
+
+        - Divide a list of elements into equal-sized sublists until each sublist contains 1 element
+        - Combine the sublists to create a new list in sorted order
+
+
+    - Here is an implementation:
+
+        def merge_sort(unsorted_list):
+            if len(unsorted_list) == 1:
+                return unsorted_list
+
+            mid_point = int(len(unsorted_list) / 2)
+            first_half = unsorted_list[:mid_point]
+            second_half = unsorted_list[midpoint:]
+
+            half_a = merge_sort(first_half)
+            half_b = merge_sort(second_half)
+            return merge(half_a, half_b)
+
+
+        def merge(first_sublist, second_sublist):
+            i = j = 0
+            merged_list = []
+
+            while i < len(first_sublist) and j < len(second_sublist):
+                if first_sublist[i] < second_sublist[j]:
+                    merged_list.append(first_sublist[i])
+                    i += 1
+                else:
+                    merged_list.append(second_sublist[j])
+                    j += 1
+
+            while i < len(first_sublist):
+                merged_list.append(first_sublist[i])
+                i += 1
+            while j < len(second_sublist):
+                merged_list.append(second_sublist[j])
+                j += 1
+
+            return merged_list
+
+
+    - To analyze the algorithm,
+
+        - The divide step just computes the midpoint, so it can be done in O(1) time
+        - In each iteration, we divide the list in half recursively, this takes O(lg n) time
+        - The combine/merge step merges all the n elements, so it takes O(n) time
+
+        - The running time is O(n lg n).
+
+
+
+- Dynamic Programming
+
+    - Dynamic programming is the most powerful design technique for solving optimization problems.  Such
+        problems generally have many possible solutions.
+
+
+    - The basic idea of dynamic programming is based on the intuition of the divide-and-conquer technique.
+        Essentially, we explore the space of all possible solutions by dividing the problem into a series
+        of subproblems, then combine the results to compute the correct solution for the large problem.
+
+
+    - Whereas divide-and-conquer is used to solve a problem by combining the solution of disjoint
+        (non-overlapping) subproblems, dynamic programming is used when the subproblems are overlapping.
+
+      Dynamic programming techniques solve each subproblem only once and do not recompute the solution to
+        an already encountered subproblem.  Instead, it uses a remembering technique to avoid the
+        recomputation.
+
+
+    - Dynamic programming problems have 2 important characteristics:
+
+        1. Optimal substructure
+
+             Given any problem, if the solution can be obtained by combining the solutions of it's 
+               subproblems, the problem is said to have an 'optimal substructure'.  For example, the ith
+               Fibonacci number can be computed by combining the (i-1)th and (i-2)th Fibonacci numbers.
+
+        2. Overlapping Subproblems
+
+             If an algorithm has to repeatedly solve the same problem again and again, the problem has
+               overlapping subproblems.  For example, fib(5) will have multiple computations for fib(3)
+               and fib(2).
+
+
+    -There are 2 ways to store the results of each subproblem: Top-down with memoization and bottom-up.
+        With the top-down approach, we start from the initial problem set and divide it into small
+        subproblems.  After the solution to a subproblem has been determined, we store the result.
+        In the future, when this subproblem is encountered, we return it's precomputed result.
+
+     'Memoization' means storing the solution of the subproblem in an array or hash table.  The procedure
+        is called 'memoized' because it remembers the results of the operation that has been computed
+        before.
+
+
+    - The bottom-up approach depends on the size of the subproblems.  We solve smaller subproblems first, 
+        and while solving a particular subproblem, we already have a solution for the smaller subproblems
+        on which it depends.
+
+
+
+- Calculating the Fibonacci Series
+
+    - Here is a recursive solution:
+
+        def fib(n):
+            if n <= 1:
+                return 1
+            else:
+                return fib(n-1) + fib(n-2)
+
+
+    - Note that in this solution, we keep calculating the same numbers over again:
+
+                                  fib(5)
+                                 /      \
+                            fib(4)       fib(3)
+                            /   \         /   \
+                        fib(3)  fib(2)  fib(2) fib(1)
+                        /   \
+                    fib(2)  fib(1)
+
+
+    - With dynamic programming, using the memoization technique, we can store results so that they don't
+        have to be recomputed.
+
+        lookup = [None] * 10
+
+        def dyna_fib(n):
+            if n == 0:
+                return 0
+            if n == 1:
+                return 1
+            if lookup[n] is not None:
+                return lookup[n]
+            lookup[n] = dyna_fib(n-1) + dyna_fib(n-2)
+            return lookup[n]
+    
+
+
+    - Since we only solve for each value once, the running time complexity of the dynamic solution is O(n).
+
+
+
+- Greedy Algorithms
+
+    - Greedy algorithms often involve optimization and combinatorial problems.  In greedy algorithms, the
+        objective is to obtain the optimal solution from many possible solutions in each step.
+
+      We try to get a local optimum solution, which may eventually lead us to the globally optimum solution.
+        The greedy strategy doesn't always produce the optimum solution, but locally optimum solutions
+        generally approximate the globally optimum solution.
+
+
+    - For example, assume you are given some random digits, say [1, 4, 2, 6, 9, 5].  You have to make the
+        biggest number by using all the digits without repeating any digits.  To create the biggest number
+        using the greedy strategy, you repeatedly select the largest digit until no digits are left.
+
+               List of digits           Number
+               -----------------------------------
+               1, 4, 2, 6, 9, 5         
+               1, 4, 2, 6, 5            9
+               1, 4, 2, 5               96
+               1, 4, 2                  965
+               1, 2                     9654
+               1                        96542
+                                        965421
+
+
+    - For another example, consider you gave $29 to someone with the least possible bills.  To solve this
+        with the greedy aproach, we give them a $20, a $5, and 4 $1.
+
+      Now consider another currency where we have $1, $14, and $25 bills.  With the greedy approach, we
+        give them a $25 and 4 $1.  However, this is not the globally optimum solution.  We could have given
+        them 2 $14 and 1 $1.
+
+
+    - The classic example is to apply the greedy algorithm to the traveling salesperson problem, where a
+        greedy approach always chooses the closest destination first.  In this way, we may not get a
+        globally optimal solution, but we will get an optimal solution.
+
+
+    - Popular standard problems that we can use greedy algorithms to solve include:
+
+        - Kruskal's minimum spanning tree
+        - Dijkstra's shortest path problem
+        - The Knapsack problem
+        - Prim's minimal spanning tree problem
+        - The traveling salesperson problem
+
+
+
+- Shortest Path Problem
+
+    - The shortest path problem requires us to find the shortest possible route between nodes on a graph.
+        Dijkstra's algorithm is a very popular method for solving this using the greedy approach.
+
+
+    - Dijkstra's algorithm works for weighted directed and undirected graphs.  The algorithm produces the
+        output of a list of the shortest path from a given source node A, in a weighted graph.
+
+        1. Initially, mark all the nodes as unvisited, and set their distance from the source node to
+             infinity (the source node is set to 0).
+
+        2. Set the source node as the current one.
+
+        3. For the current node, look for all the unvisited adjacent nodes, and compute the distance to
+            that node from the source node through the current node.  Compare the newly computed distance
+            to the currently assigned distance, and if it is smaller, set this as the new value.
+
+        4. Once we have considered all the unvisited adjacent nodes of the current node, we mark it as visited.
+
+        5. If the destination node has been marked visited, or if the list of unvisited nodes is empty, the
+             algorithm is finished.
+
+        6. We consider the next unvisited node that has the shortest distance from the source node.  Repeat
+            steps 2-5.
+
+
+    - Here is an example graph we will work through>
+
+                  2
+               B----C
+            5 /    / 3
+             /  9 /
+            A-----D
+             \     \ 2
+            2 \     \ 
+               E-----F
+                   3
+
+
+    - We'll use an adjacency list to represent this graph:
+
+        graph = dict()
+        graph['A'] = {'B': 5, 'D': 9, 'E': 2} 
+        graph['B'] = {'A': 5, 'C': 2} 
+        graph['C'] = {'B': 2, 'D': 3} 
+        graph['D'] = {'A': 9, 'F': 2, 'C': 3} 
+        graph['E'] = {'A': 2, 'F': 3} 
+        graph['F'] = {'E': 3, 'D': 2}
+
+
+    - And here is our starting table:
+
+        Node      Shortest distance from source       Previous node
+        ------------------------------------------------------------
+        A         0                                   None
+        B         Infinity                            None
+        C         Infinity                            None
+        D         Infinity                            None
+        E         Infinity                            None
+        F         Infinity                            None
+
+
+    - In Step 1, we start by examining all of the adjacent nodes to A.  After doing this, the table looks
+        like:
+
+        Node      Shortest distance from source       Previous node
+        ------------------------------------------------------------
+        A         0                                   None
+        B         5                                   A
+        C         Infinity                            None
+        D         9                                   A
+        E         2                                   A
+        F         Infinity                            None
+
+      At this point, A is considered visited.
+
+
+    - Next, we examine the node with the shortest distance from A, which is E.  After doing this, our
+        table looks like:
+
+        Node      Shortest distance from source       Previous node
+        ------------------------------------------------------------
+        A         0                                   None
+        B         5                                   A
+        C         Infinity                            None
+        D         9                                   A
+        E         2                                   A
+        F         5                                   E
+
+     At this point, E is considered visited.
+
+
+    - The next smallest distances are to B and F.  We'll do B first.  After doing this, our table looks
+        like:
+
+        Node      Shortest distance from source       Previous node
+        ------------------------------------------------------------
+        A         0                                   None
+        B         5                                   A
+        C         7                                   B
+        D         9                                   A
+        E         2                                   A
+        F         5                                   E
+
+
+    - After visiting F:
+
+        Node      Shortest distance from source       Previous node
+        ------------------------------------------------------------
+        A         0                                   None
+        B         5                                   A
+        C         7                                   B
+        D         7                                   F
+        E         2                                   A
+        F         5                                   E
+
+
+    - All adjacent nodes to C have already been visited.  All adjacent nodes to D have also been visited.
+        Thus, we are done.
+
+
+    - To build our table for keeping track of the shortest path:
+
+        table = { 
+            'A': [0, None], 
+            'B': [float("inf"), None], 
+            'C': [float("inf"), None], 
+            'D': [float("inf"), None], 
+            'E': [float("inf"), None], 
+            'F': [float("inf"), None], 
+        }
+
+      To keep track of how we index into this table, we'll use these constants:
+
+        DISTANCE = 0
+        PREVIOUS_NODE = 1
+        INFINITY = float('inf')
+
+
+    - Here are helper methods we'll use:
+
+        # Returns the shortest distance to a node from the source node
+        def get_shortest_distance(table, vertex): 
+            shortest_distance = table[vertex][DISTANCE] 
+            return shortest_distance
+
+        # Sets the shortest distance to a node from the source node
+        def set_previous_node(table, vertex, previous_node): 
+            table[vertex][PREVIOUS_NODE] = previous_node
+
+        # Finds the distance between any 2 nodes in the adjacency list
+        def get_distance(graph, first_vertex, second_vertex): 
+            return graph[first_vertex][second_vertex] 
+
+        # Calculates the next node to visit
+        def get_next_node(table, visited_nodes): 
+            unvisited_nodes = list(set(table.keys()).difference(set(visited_nodes))) 
+            assumed_min = table[unvisited_nodes[0]][DISTANCE] 
+            min_vertex = unvisited_nodes[0] 
+            for node in unvisited_nodes: 
+                if table[node][DISTANCE] < assumed_min: 
+                    assumed_min = table[node][DISTANCE] 
+                    min_vertex = node 
+            return min_vertex 
+
+    
+    - Now, we can implement the algorithm to find the shortest path:
+
+        def find_shortest_path(graph, table, origin): 
+            visited_nodes = [] 
+            current_node = origin 
+            starting_node = origin 
+            while True: 
+                adjacent_nodes = graph[current_node] 
+                if set(adjacent_nodes).issubset(set(visited_nodes)): 
+                    # Nothing here to do. All adjacent nodes have been visited. 
+                    pass 
+                else: 
+                    unvisited_nodes = set(adjacent_nodes).difference(set(visited_nodes))
+                    for vertex in unvisited_nodes: 
+                        distance_from_starting_node =  get_shortest_distance(table, vertex) 
+                        if distance_from_starting_node == INFINITY and current_node == starting_node: 
+                            total_distance = get_distance(graph, vertex, current_node) 
+                        else: 
+                            total_distance = get_shortest_distance (table, current_node) 
+                                               + get_distance(graph, current_node, vertex) 
+                        if total_distance < distance_from_starting_node: 
+                            set_shortest_distance(table, vertex, total_distance) 
+                            set_previous_node(table, vertex, current_node) 
+                visited_nodes.append(current_node)
+                if len(visited_nodes) == len(table.keys()): 
+                    break 
+                current_node = get_next_node(table,visited_nodes) 
+            return (table)
+
+
+    - The running time of the algorithm depends on how the vertices are stored and retrieved.  Generally,
+        the min-priority queue is used to store the vertices of a graph.  So, the time complexity of
+        Dijkstra's Algorithm depends on how the min-priorty queue is implemented.
