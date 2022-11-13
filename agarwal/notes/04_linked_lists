@@ -1,0 +1,189 @@
+----------------------------------------------------------------------
+| CHAPTER 4 - LINKED LISTS                                           |
+----------------------------------------------------------------------
+
+- Arrays
+
+    - An array is a collection of data items of the same type, whereas a linked list is a collection of
+        the same data type stored sequentially and connected through pointers.
+
+      Array stores the elements in contiguous memory locations, while linked lists store elements in
+        different memory locations.
+
+
+    - Storing data values of the same type makes it easy and fast to compute the position of any element
+        in an array using offset and the base address.
+
+
+    - Array elements can be accessed randomly in constant time using their index positions.
+
+
+    - Arrays have a static size that has to be declared at the time of creation.
+
+
+    - The 'insert' and 'delete' methods are slower in arrays than they are in linked lists.  If you insert
+        an element at a specific position, all other elements have to be shifted over.
+
+      So, arrays are suitable when we want to a lot of accessing of elements, and fewer insertion and
+        deletion operations.  Linked lists are better when when the size of the list is not fixed, and a
+        lot of insertion and deletion operations will be required.
+
+
+
+- Linked Lists
+
+    - A linked list has data elements stored in memory in different locations connected through pointers.
+        The length of the list can increase or decrease during the execution of the program.
+
+
+    - A node is a container of data, together with one or more links to other nodes, where a link is a
+        pointer.
+
+        class Node:
+            def __init__(self, data=None):
+                self.data = data
+                self.next = next
+
+
+    - We'll need the following operations to use a linked list:
+
+        - Traversing the list
+
+        - Inserting a data item into the list
+            - Inserting a new item at the beginning
+            - Inserting a new item at the end
+            - Inserting a new item in the middle
+
+        - Deleting an item from the list
+            - Deleting the first node
+            - Deleting the last node
+            - Deleting a node in the middle
+
+
+
+- Singly Linked Lists
+
+    - A singly linked list contains nodes that have a pointer to the next node in the list.  The link of
+        the last node is set to None, which indicates the end of the list.
+
+        # Construct a linked list
+        n1 = Node('eggs')
+        n2 = Node('ham')
+        n3 = Node('spam')
+
+        n1.next = n2
+        n2.next = n3
+
+
+    - To traverse the list:
+
+        current = n1
+
+        while current:
+            print(current.data)
+            current = current.next
+
+
+    - The previous approach is simple, but it requires too much manual work by the programmer and too much
+        of the implementation of the list is exposed.  Instead, we can create an iterator:
+
+        # Define an iterator
+        def iter(self):
+            current = self.head
+            while current:
+                val = current.data
+                current = current.next
+                yield val
+
+        # Use the iterator
+        for word in words.iter():
+            print(word)
+
+
+    - Here is the beginning of our class definition for a singly linked list:
+
+        class SinglyLinkedList:
+            def __init__(self):
+                self.head = None
+
+
+
+- Appending Items
+
+    - The first operation we need to perform is to append items to the list.
+
+        class SinglyLinkedList:
+            def __init__(self):
+                self.head = None
+                self.size = 0
+
+            def append(self):
+                node = Node(data)
+                if self.head is None:
+                    self.head = node
+                else:
+                    current = self.head
+                    while current.next:
+                        current = current.next
+                    current.next = node
+
+
+    - To use our new list:
+
+        # Create a list
+        words = SinglyLinkedList()
+        words.append('egg')
+        words.append('ham')
+        words.append('spam')
+
+        # Traverse the list
+        current = words.head
+        while current:
+            print(current.data)
+            current = current.next
+
+
+    - One drawback with this first implementation is that we have to traverse the entire list to find the
+        insertion point.  We can reduce the 'append' method from O(n) to O(1) by keeping a reference to the
+        last node in the list.
+
+        class SinglyLinkedList:
+            def __init__(self):
+                self.head = None
+                self.tail = None
+                self.size = 0
+
+            def append(self):
+                node = Node(data)
+                if self.tail:
+                    self.tail.next = node
+                    self.tail = node
+                else:
+                    self.head = node
+                    self.tail = node
+
+
+
+- Appending Items at Intermediate Positions
+
+    - To add a new element at a given index position:
+
+        def append_at_a_location(self, data, index):
+            current = self.head
+            prev = self.head
+
+            node = Node(data)
+            count = 1
+
+            while current:
+                if count == 1:
+                    node.next = current
+                    self.head = node
+                    return
+                elif index == index:
+                    node.next = current
+                    prev.next = node
+                    return
+                count += 1
+                prev = current
+                current = current.next

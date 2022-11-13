@@ -486,3 +486,11 @@
     - The running time of the algorithm depends on how the vertices are stored and retrieved.  Generally,
         the min-priority queue is used to store the vertices of a graph.  So, the time complexity of
         Dijkstra's Algorithm depends on how the min-priorty queue is implemented.
+
+        - In the first case, the vertices are stored in an array.  Here, each operation for searching
+            for a vertex in the array is O(V), so the total complexity is O(V**2).
+
+        - If the min-priority queue is implemented using a Fibonacci heap, the time taken for each iteration
+            of the loop for extracting the minimum node is O(V).  Iterating over all the adjacent nodes
+            takes O(E) time.  Iterating over all the vertices' adjacent nodes tabkes O(lg v).  So, the
+            total running time is O(E + V log V).
